@@ -1,0 +1,44 @@
+                   ANSIBLE-RAHUL WAGH
+https://phoenixnap.com/kb/ssh-permission-denied-publickey------ansible ssh error
+
+sudo adduser ansible
+sudo usermod -aG sudo ansible
+sudo visudo
+ansible ALL=(ALL:ALL) NOPASSWD:ALL------------
+
+Getting Started with Ansible (Part 1)-----------https://www.youtube.com/watch?v=0CRiWGV57WE-----SETUP ANSIBLE USER FOR ANSIBLE(success)
+
+--------------------------------------------------------------------------------------------------------------------------
+
+githubrepo------------------------https://github.com/rahulwagh/ansible-examples
+
+Ansible for Beginners: Learn the Fundamentals of IT Automation - Part 1-------https://www.youtube.com/watch?v=2hVSpENzhwA&list=PL7iMyoQPMtAPZl58ovoOlxFxNPioSx838&index=1
+Ansible Installation: The Windows, Ubuntu, CentOS, and macOS Guide - Part 2-------https://www.youtube.com/watch?v=5bEAZ0La_Xo&list=PL7iMyoQPMtAPZl58ovoOlxFxNPioSx838&index=2
+Ansible Project Structure: A Beginner's Guide to Inventory, Hosts, Roles, and Tasks - Part 3------https://www.youtube.com/watch?v=qsqpcvzLwf4&list=PL7iMyoQPMtAPZl58ovoOlxFxNPioSx838&index=3
+Securing Ansible with SSH Keys: A Comprehensive Guide - Part 4----https://www.youtube.com/watch?v=cH5P6g4l2hc&list=PL7iMyoQPMtAPZl58ovoOlxFxNPioSx838&index=4
+Ansible & YAML : What is YAML is Ansible - Part 5-----https://www.youtube.com/watch?v=8AQsk0PI_r8&list=PL7iMyoQPMtAPZl58ovoOlxFxNPioSx838&index=5
+Ansible Handlers: A Step-by-Step Guide - Part 6------https://www.youtube.com/watch?v=gaJd5lENYjA&list=PL7iMyoQPMtAPZl58ovoOlxFxNPioSx838&index=6
+Mastering Ansible Variable - Part-7----------https://www.youtube.com/watch?v=bwKdTR_nH38&list=PL7iMyoQPMtAPZl58ovoOlxFxNPioSx838&index=7
+Ansible when conditional explained - Part 9-----------https://www.youtube.com/watch?v=1Dqw7FRMxNk&list=PL7iMyoQPMtAPZl58ovoOlxFxNPioSx838&index=9
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+https://www.janbasktraining.com/blog/top-ansible-interview-questions-and-answers/#11731-----
+
+ANSIBLE IDEMPOTENCE---------------
+Idempotence in Ansible means that executing a task multiple times should have the result as excuting it once.
+Ansible ensures that by checking the current  state of system with desired state described in playbooks.If a task has already been completed successfully,Ansible
+skips it during the subsequent runs,preventing unnecessary changes.
+
+ANSIBLE TOWER(AWX)----Opensource  webbased interface and automation platform  built on top of the ansible.
+It provides the graphical dashboard,RBAC,job scheduling and RESTful api.
+It allows for centralised management and monitoring of ansibleplaybooks and provides user friendly interface for managing automation  tasks.
+
+Ansible custom modules are the modules which are extending the ansible functionality by performing the specific tasks that are not covered with  built-in modules.
+THESE are used in the playbooks  like built-in modules.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cloud4devops--------------ansible hands on videos practice
+
+
+

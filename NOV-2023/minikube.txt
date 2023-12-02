@@ -1,0 +1,3 @@
+https://www.linuxtechi.com/how-to-install-minikube-on-ubuntu/----
+
+kubectl get nodes-------------command completed---continue next

@@ -1,0 +1,204 @@
+                                    GIT------------https://www.geeksforgeeks.org/git-difference-between-git-revert-checkout-and-reset/(good for git complete)
+
+GIT CHECKOUT -----------IS USED To discard the changes in the working repository.----GIT CHECKOUT FILENAME----
+GIT RESET---------------git reset is used when we want to unstage a file and bring our changes back to the working directory.
+                        git reset can also be used to remove commits from the local repository.
+                 GIT RESET HEAD FILENAME
+                 GIT RESET HEAD 1(HEAD~1 here means that we are going to remove the topmost commit or the latest commit that we have done.
+                               
+
+                                We cannot remove a specific commit with the help of git reset , for ex : we cannot say that
+                                we want to remove the second commit or the third commit , we can only remove latest commit 
+                                or latest 2 commits … latest N commits.(HEAD~n) [n here means n recent commits that needs 
+                                  to be deleted]
+
+git reset –soft HEAD~1 – --------------------This command will remove the commit but would not unstage a file. Our changes still would be in the staging area.
+gets back  to the last commit.
+
+git reset –mixed HEAD~1 or git reset HEAD~1 –-------------------- This is the default command that we have used in the above example which removes the commit 
+as well as unstages the file and our changes are stored in the working directory.
+
+git reset –hard HEAD~1 – ----------------This command removes the commit as well as the changes from your working directory. This command can also be called 
+                                          destructive command as we would not be able to get back the changes so be careful while using this command
+
+
+If our commits are not published to remote repository , then we can use git reset.
+
+Use git reset only for removing commits that are present in our local directory and not in remote directory.
+
+We cannot remove a specific commit with the help of git reset , for ex : we cannot say that we want to remove the second commit or the third commit , 
+we can only remove latest commit or latest 2 commits … latest N commits.(HEAD~n) [n here means n recent commits that needs to be deleted].
+
+GIT git revert is used to remove the commits from the remote repository. 
+We could have used the git reset command but that would have deleted the commit just from the local repository and not the remote repository. If we do this then we 
+would get conflict that the remote commit is not present locally. So, we do not use git reset here. The best we can use here is git revert.
+
+git revert <commit id of the commit that needs to be removed>
+Points to keep in mind – 
+Using git revert we can undo any commit , not like git reset where we could just remove “n” recent commits.
+
+
+______________________________________________________
+git checkout--Discards the changes in the working repository--used in the local repository.Does not make any changes to the commit history.Moves HEAD pointer to a
+specific commit..
+
+git reset----Unstage a file and bring our changes back to the working directory.Used in local repository.Alters the existing commit history.Discards the 
+uncommitted changes..Can be used to manipulate commits or files..
+
+git revert------Removes the commits from remote repository.Used in the remote repository.Adds a new commit to the existing commit history.Rollbacks the changes
+which we have committed.Does not manipulate your commits or files..
+__________________________________________________________
+
+GIT FETCH------------------------Git Fetch is the command that tells the local repository that there are changes available in the remote repository 
+without bringing the changes into the local repository.
+GIT PULL----Git Pull on the other hand brings the copy of the remote directory changes into the local repository. 
+            git pull = git fetch + git merge.
+***********************************************************************************************************************************************************************
+HOW TO FIND AND RESTORE A DELETED FILE IN GIT REPOSITORY-------------
+
+git log --diff-filter-D --summary-----info about a commit having deleted files information.(test1.py)... you can use git rev-list to find the checksum of the commit in which that file was deleted. 
+git revert commit id------------to restore the deleted file----
+git log -n 3----shows the deletion or revert files  with mentioned 3 commits.
+      
+ you can use git rev-list to find the checksum of the commit in which that file was deleted. 
+git rev-list----
+
+
+
+********************************************************************************************************************************************************************
+Case 1: I deleted a file but I did not commit-------------     https://www.delftstack.com/howto/git/git-restore-deleted-file-before-commit/---git commands
+                                                               https://www.freecodecamp.org/news/practical-git-and-git-workflows/
+git checkout HEAD (filename)
+
+
+Case 2: I deleted a file on Git and committed-----------              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-----personal access token
+																														
+git reset  --hard HEAD~1
+
+Case 3: I committed a deletion and then I made other commits------
+git log --file name
+
+git checkout <commit hash> --<filename>
+git checkout <deletion commit hash>~1 --<filename>
+
+Case 4: I deleted a file, committed and sent to a remote server-----------------
+git revert --no <commit>
+
+
+GIT CHERRYPICK------------is used to  apply(selecting)  a specific commit from one branch into another branch...
+What is Git cherry pick example?
+Cherry picking is the act of picking a commit from a branch and applying it to another. 
+git cherry-pick can be useful for undoing changes. For example, say a commit is accidently made to the wrong branch. 
+You can switch to the correct branch and cherry-pick the commit to where it should belong.
+
+
+
+GIT FETCH------------
+1.GIT FETCH only downloads the new data from remote repository.
+2.Does not integrate the new data with your working files.
+3.GIT FETCH can be done at anytime to update the remote tracking branches....  GIT FETCH ORIGIN   or GIT FETCH -ALL
+
+GIT PULL-----
+1.git pull updates the current HEAD branch  with the latest changes from the remote server.
+2.GIT PULL  downloads the new data and inegrate with the current working files.
+3.it tries to merge the rremote changes with local ones.
+4.git pull origin master.
+
+
+GIT MERGE--------creates an extra merge commit every time and you need to incorporate the changesgit
+                 pollutes your feature branch hostory
+
+GIT REBASE-----incorporates all the new commits in master branch
+               re-writes the project history by creating brand new commits for each commit in the original branch....
+
+
+
+GIT STASH---------u are working on master branch-after sometime u have to work on some other branch forced by the manager(incase)--
+                  u have to save the uncommitted changes of your branch(git stash)---after complete the work on other branch
+                  u can reapply those changes at any time.....
+
+TO FIND THE LIST OF FILES WHICH ARE ADDED or CHANGED IN A PARTICULAR COMMIT--
+                  git diff-tree -r commithash[here r indcates to list individual files and commit hash indicates to list all the files that are changed or added in that commit.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+GIT MERGE CONFLICT----caused by competing the line changes i.e when people make different changes to the same line of the same file on different branches in your git repo.
+                                https://www.youtube.com/watch?v=XU2vpXFKPGU
+HOW TO RESOLVE THE CONFLICT-
+1.manually edit the conflicted file to select the changes that you want to keep in the final merge.
+2.USING THE CONFLICT EDITOR---------------
+a)under your repository name click on ---pull requests
+b)click the pull request with merge conflict that you'd like to resolve
+c)near the botttom of your pull request,click resolve conflicts
+d)decide if u want to keep your branch changes,keep other branch changes or make a   brand new change which may incorporate changes from both branches..
+e)delete the conflict markers and make changes you want in the final merge..
+f)if you have more than one conflict in your file,scroll down to the next set of conflict markers and repeat steps four and five to resolve your merge conflict.
+g)once you have resolved all the conflicts in the file,click mark as resolved..
+h)if u have more than  one file with a conflict,selet the next file you want to edit on the left side of the page under "CONFLICTING FILES" nad repeat steps 4  to 7
+  until u have resolved all of your pull requests merge conflicts.
+i)once you resolved all your merge conflicts,click COMMIT MERGE.this merges the entire base branch  into your head branch.
+j)to merge your pull request,click  merge pull request.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+MERGE CONFLICT USING COMMAND LINE--------------https://www.youtube.com/watch?v=XU2vpXFKPGU
+1)open terminal ---
+2)cd repository name(conflicted repo)
+
+3)generate the list of the files  affected by the merge conflict,select the merge conflicted file using GIT STATUS---
+4)vi conflicted file name
+5)to see the beginning of the merge conflict in your file,search  the file for conflict marker
+6)next you will see which divides your changes from the changes in the other branch,followed by branch name.
+7)decide if you u want to keep your branch changes or keep only other branch changes  or make a  brand new change,which may incorporate changes from both branches..
+8)delete the conflict markers and make changes that you want in final merge...
+9)add or stage your changes-----git add .
+10)                             git commit -m "  
+
+https://www.simplilearn.com/tutorials/git-tutorial/merge-conflicts-in-git#-----------------------good for git
+
+Git Commands to Resolve Conflicts
+1. git log --merge 
+The git log --merge command helps to produce the list of commits that are causing the conflict
+
+2. git diff 
+The git diff command helps to identify the differences between the states repositories or files
+
+3. git checkout 
+The git checkout command is used to undo the changes made to the file, or for changing branches
+
+4. git reset --mixed 
+The git reset --mixed command is used to undo changes to the working directory and staging area
+
+5. git merge --abort
+The git merge --abort command helps in exiting the merge process and returning back to the state before the merging began
+
+6. git reset
+The git reset command is used at the time of merge conflict to reset the conflicted files to their original state 
+-we will 
+https://www.simplilearn.com/resources/devops/tutorials-----------------------------------------------------------------------------------------
+
+How clone specific branch in git--------git clone -b branch(branch name) --single-branch  https:// github.com(url of the github)
+
+BUILD LIFECYCLE BASICS----------
+1.VALIDATE
+2.COMPILE
+3.TEST
+4.PACKAGE
+5.VERIFY
+6.INSTALL 
+7.DEPLOY
+
+WHAT ARE GITHUB API'S
+BRANCHING STRATEGIES IN GUTHUB-----GIT MODEL AND GIT FEATURE(branch)
+
+Before pushing the code need to remember that----------PULL BEFORE PUSH(push should be done after push equest (PR in github)
+HOWW TO RESOLVE MERGE CONFLICTS---------Git throws merge conflicts when there is different lines of code at the same number of line.is resolved by discussing and decided 
+by the concern developers for which code should be retained.then they merge that code with the master branch....
+Brnaching strategy---
+we have feature branch strategy---
+we have master and integration branches(long lived branches)
+In master we will point to production commit.
+we will have complete code in integtration branch.
+to develop the code-we will create a branch(feature) and develop the  code-for every commit we will run the cicd-after cicd success developer raise the pull request
+to send the code to integration--then we push that code to qa,pre-production and performance---if ecverything ok ---then we will push it  to the production deployment
+here again we will check the code ---is it success in qa,pre-prod and performance areas.
+
+
+

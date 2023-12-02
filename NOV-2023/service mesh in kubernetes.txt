@@ -1,0 +1,17 @@
+SERVICE MESH----https://www.youtube.com/watch?v=u0-nWUL1I8g
+to avoid all the below challenges---service mesh used
+
+communiction complexity
+service discovery 
+failure isolation
+config changes
+
+
+previously to communicate with microservices sidecar containers are used.But if microservices and sidecar containers are huge number it wwill be mesh.
+TO AVOID WE ARE USING THE SERVICE MESH
+IN service mesh---main components---
+controlpane--------service mesh control plane,distributes the configuration across the  sidecar proxies in the data plane.
+data plane-----instance(under this sidecar)-----instance 2 [under this sidecar]----etc..
+so to communicate between the microservices --first request goes to sidecar and trace and observed.
+
+

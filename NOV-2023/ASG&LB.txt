@@ -1,0 +1,5 @@
+create instancess and create 2 ami from an those ec2 instances---check with server ipaddress and servername in webbrowser
+create launch configuration using those AMI's
+create servers from those instances
+creating ASG with those servers
+creating load balancer

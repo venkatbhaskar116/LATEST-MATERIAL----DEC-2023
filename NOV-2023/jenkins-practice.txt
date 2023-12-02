@@ -1,0 +1,12 @@
+                    JENKINS PRACTICE
+
+MANAGE USERS AND ROLES--------https://www.youtube.com/watch?v=QvFungzXI5s
+
+place the localhost:8080 or ip adress:8080  in browser and login as admin and admin.
+Download the required plugins (manage jenkins--manage plugins)
+Managing the users and roles(download the Role based strategy plugin)
+create users and check for login with those usernames.
+manage jenkins--configure Global security--AUTHERIZATION-select Role based strategy.apply and save..(hereafter,u will find the manage and assign roles option)
+
+https://www.lambdatest.com/blog/how-to-create-jenkins-multibranch-pipeline/---jenkins multibranch pipeline practice
+

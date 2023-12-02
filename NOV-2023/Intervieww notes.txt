@@ -1,0 +1,334 @@
+Warfile in jenkins location--------cat /var/lib/jenkins/workspace/webapps/target/webapp.war
+
+MAIN COMPONENTS OF AUTOSCALING-------
+The main components of AWS that are involved in autoscaling include autoscaling groups, Amazon Machine Image (AMI), 
+load balancer, snapshot, and EC2 instance.
+
+In this unit, you learned about the benefits of automatically scaling using EC2 Auto Scaling. This service is 
+made up of three components: a launch template to know what to scale, scaling policies that define when to scale, 
+and an ASG that decides where to launch the EC2 instances.
+
+different types of autoscaling -----------------
+
+what is vpc--- explain---(chk for clarity)
+VPC: An Amazon VPC (virtual private cloud) is an isolated section of the AWS cloud where you can provision your infrastructure..
+
+
+Elements of a VPC
+
+IPv4 and IPv6 address blocks.
+Subnet creation.
+Route tables.
+Internet connectivity.                          
+Elastic IP addresses (EIPs)
+Network/subnet security.
+Additional networking services
+
+howmany vpc's u have in ur project--------
+Nat Gateway: A Nat Gateway enables instances in private subnets to connect to the internet. 
+The Nat gateway must be deployed in the public subnet with an Elastic IP. Once the resource is created, a route table associated with the the 
+private subnet needs to point internet-bound traffic to the NAT gateway.
+
+
+Difference b/w INTERNET GATEWAY AND NAT GATEWAY-----------
+
+Internet Gateway (IGW) allows instances with public IPs to access the internet.
+NAT Gateway (NGW) allows instances with no public IPs to access the internet.
+A NAT gateway allows the instances within a private subnet access to the internet.
+A NAT gateway itself block all the initiations from the intenet.
+
+IGW--VPC componenet allows to communicate between the vpc and internet.
+If a VPC does not have an Internet Gateway, then the resources in the VPC cannot be accessed from the Internet..
+Internet Gateway supports IPv4 and IPv6 traffic.
+You can associate exactly one Internet Gateway with a VPC.
+Internet Gateway is not Availability Zone specific.
+
+NAT gateway---
+NAT Gateway (NGW) is a managed Network Address Translation (NAT) service.
+ Instances in a private subnet can connect to services outside your VPC but external services cannot initiate a connection with those instances.
+NAT gateways are supported for IPv4 or IPv6 traffic.
+NAT gateway supports the following protocols: TCP, UDP, and ICMP.
+Each NAT gateway is created in a specific Availability Zone and implemented with redundancy in that zone.
+If you have resources in multiple Availability Zones and they share one NAT gateway, and if the NAT gateway’s Availability Zone is down, resources in the other 
+Availability Zones lose internet access.
+To create an Availability Zone-independent architecture, create a NAT gateway in each Availability Zone.
+You can associate exactly one Elastic IP address with a public NAT gateway.
+
+
+what is route table-----------
+
+A route table contains a set of rules, called routes, that determine where network traffic from your subnet or gateway is directed.
+Route table: A Route table specifies which external IP address are contactable from a subnet or internet gateway.
+
+Security Groups: A security group acts as a virtual firewall for your instance to control incoming and outgoing traffic. 
+The security group below enables all traffic over port 22 (SSH). Both instances in the private and public subnet require this security group.
+
+
+
+what are the services are available in kubernetes------cluster ip,loadnbalancer and node port...
+
+how do u scale the pods in kubernetes -------------using replicas in deployment file---
+
+on what basis u scale the pods and what u need to define------
+Scaling is accomplished by changing the number of replicas in a deployment. A replica is a copy of a pod that already contains a running service. 
+By having multiple replicas of a pod, you can ensure that your deployment has the available resources to handle increasing load.
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Steps to copy files from S3 bucket to EC2 instance (Download)
+
+Create an IAM role with S3 write access or admin access.
+Map the IAM role to an EC2 instance.
+Install AWS CLI in EC2 instance.
+Run the AWS s3 cp command to copy the files from S3 to EC2.(aws s3 cp command goes to s3 bucket and fetch the file from there to ec2 instance).
+
+how to access the s3 data to ec2 instance based on object id of ec2---------------
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+How to access an private ec2 instance from outside----------------------------------
+
+HARD LINK AND SOFT LINK INL\ LINUX---------------------------
+
+For example, if we have a file a.txt. If we create a hard link to the file and then delete the file, we can still access the file using hard link. 
+But if we create a soft link of the file and then delete the file, we can’t access the file through soft link and soft link becomes dangling. 
+Basically hard link increases reference count of a location while soft links work as a shortcut (like in Windows) 
+
+A hard link remains valid even if the target file is deleted. On the other hand, a soft link becomes invalid when the originating file is deleted.
+The "ln" command is used to make a hard link in Linux. On the other hand, the command for a soft link is "ln -s".
+Hard links cannot be established outside the file system. On the other hand, Soft links can be established across
+ the file system.
+A hard link may only link to a file, not a directory. On the other hand, soft links may link both to a file or a directory.
+
+What is inode in Linux with example?
+Inode or index node is a Linux data structure that describes the objects of file systems, which include files and directories. 
+An inode contains a record of file and directory location in the file system, their names, owner account, and permissions.
+
+NAMESPACES IN LINUX-------------------------
+Namespaces are a feature of the Linux kernel that partitions kernel resources such that one set of processes sees one set of resources while another set of 
+processes sees a different set of resources.” In other words, the key feature of namespaces is that they isolate processes from each other.
+
+WHAT ARE THE GLOBAL CREDENTIALS IN JENKIN---------------------
+Global credentials are manually entered login methods stored in Jenkins. Anyone with access can use the credentials to connect to other services. 
+These can include: Code repos, like GitHub or BitBucket.
+
+cg groups in  docker------------------------
+Control Groups (cgroups) are a feature of the Linux kernel that allow you to limit the access processes and containers have to system resources 
+such as CPU, RAM, IOPS and network. In this lab you will use cgroups to limit the resources available to Docker containers..
+t provides mechanism to limit and monitor system resources like CPU time, system memory, disk bandwidth, network bandwidth,,
+
+The Docker daemon ( dockerd ) listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes. 
+A daemon can also communicate with other daemons to manage Docker services..
+
+CONTAINER LOGS LOCATION IN DOCKER----------/vsr/lib/docker/<container_id>/<container_id>-jsong.log
+one logfile per each container...........
+to know container id-----docker ps
+docker logs <container_id>
+docker logs <container_id> -f 
+docker logs <container_id> --tail N
+
+what is ingress conroller-----------------
+
+what is nacl--------(network access control list)-------it sits before subnet level
+
+TERRAFORM IS INFRASTRUCTURE AS  A CODE and it is provisioned the infrastructure..
+Ansible is a configuration management tool and also passing the commands into the servers by looging with ssh connection...
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Kubernetes comes from a Greek word meaning ‘captain,’ ‘helmsman,’ or ‘governor.’ The term is now also used in the DevOps and on-premises software development world to 
+refer to a powerful bundle of solutions that equips operations engineers to scale and service server (and box) setups effortlessly. 
+Enhance your Kubernetes skills and gain credibility in the field with the Certified Kubernetes Administrator Certification Training. Enroll now!
+
+1. What is Kubernetes?
+This is one of the most basic Kubernetes interview questions yet one of the most important ones! Kubernetes is an open-source container orchestration tool or 
+system that is used to automate tasks such as the management, monitoring, scaling, and deployment of containerized applications. It is used to easily manage several 
+containers (since it can handle grouping of containers), which provides for logical units that can be discovered and managed.
+
+2. What are K8s? 
+K8s is another term for Kubernetes. 
+
+3. What is orchestration when it comes to software and DevOps? 
+Orchestration refers to the integration of multiple services that allows them to automate processes or synchronize information in a timely fashion. Say, for example, 
+you have six or seven microservices for an application to run. If you place them in separate containers, this would inevitably create obstacles for communication. 
+Orchestration would help in such a situation by enabling all services in individual containers to work seamlessly to accomplish a single goal. 
+
+4. How are Kubernetes and Docker related?
+This is one of the most frequently asked Kubernetes interview questions, where the interviewer might as well ask you to share your experience working with any of them.
+ Docker is an open-source platform used to handle software development. Its main benefit is that it packages the settings and dependencies that the software/application
+ needs to run into a container, which allows for portability and several other advantages. Kubernetes allows for the manual linking and orchestration of several containers, running on multiple hosts that have been created using Docker. 
+
+5. What are the main differences between the Docker Swarm and Kubernetes?
+Docker Swarm is Docker’s native, open-source container orchestration platform that is used to cluster and schedule Docker containers. 
+Swarm differs from Kubernetes in the following ways:
+
+Docker Swarm is more convenient to set up but doesn’t have a robust cluster, while Kubernetes is more complicated to set up but the benefit of having the assurance 
+of a robust cluster
+Docker Swarm can’t do auto-scaling (as can Kubernetes); however, Docker scaling is five times faster than Kubernetes 
+Docker Swarm doesn’t have a GUI; Kubernetes has a GUI in the form of a dashboard 
+Docker Swarm does automatic load balancing of traffic between containers in a cluster, while Kubernetes requires manual intervention for load balancing   
+Docker requires third-party tools like ELK stack for logging and monitoring, while Kubernetes has integrated tools for the same 
+Docker Swarm can share storage volumes with any container easily, while Kubernetes can only share storage volumes with containers in the same pod
+Docker can deploy rolling updates but can’t deploy automatic rollbacks; Kubernetes can deploy rolling updates as well as automatic rollbacks
+
+The main components of a node status are Address, Condition, Capacity, and Info.
+
+ What process runs on Kubernetes Master Node? 
+The Kube-api server process runs on the master node and serves to scale the deployment of more instances.
+
+The kube-scheduler assigns nodes to newly created pods.
+A Daemonset ensures all  nodes run a copy of a pod.
+When nodes are added to cluster,pods are added to the node.
+daemonset is not running on all nodes sometimes on masternode also---to run ----u need to add parameters in deployment file are below
+tolerations-
+-  key:node-role.kubernetes.io/master
+   effect:NoSchedule
+
+A Daemon set is a set of pods that runs only once on a host. They are used for host layer attributes like a network or for monitoring a network, which you may not need to run on a host more than once
+A Daemeonset ensures that all nodes run a copy of a pod.
+Running a cluster storage daemon on every daemon.
+          logs collection daemon      "
+	          node monitor daemon         "
+To copy and paste any content from ur local machine to kubernetes(control+insert to copy -----shift+insert to paste in kubernetes)
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+TO COPY AND PASTE THE ANY CONTENT FROM UR LOCAL SYSTEM TO KUBERNETES------control+insert to copy and shift+insert to paste in kubernetes
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+HELM IS A PACKAGE MANAGER FOR KUBERNETES
+HELM PACKAGES ARE CALLED CHARTS(bundle of YAML files)---create your own helm charts with helm---push them to the helm repository--all users can get from that repo.
+HELM CHARTS HELP DEFINE,INSTALL AND UPGRADE COMPLEX KUNERNETES APPLICATION
+HELM CHARTS CAN BE VERSIONED,SHARED AND PUBLISHED. 
+Use helm rollback to roll back to an older version of a release with ease
+
+	The LoadBalancer service is used to expose services to the internet. A Network load balancer, for example, creates a single IP address that forwards all traffic to your service. 
+____________________________________________________________________________________________________________________________________________________________________
+                                  INGRESS    IN   KUBERNETES
+
+Ingress is a native Kubernetes resource like pods, deployments, etc. Using ingress, you can maintain the DNS routing configurations. The ingress controller does the 
+actual routing by reading the routing rules from ingress objects stored in etcd...
+Without Kubernetes ingress, to expose an application to the outside world, you will add a service Type Loadbalancer to the deployments.
+
+In INGRESS---application can connect to the kubernetes cluster using multiple ports with DNS of application(ex---google.com 9943,google.com 9944 etc )..
+LOADBALANCER------application can connect with a single port like 9946(google.com 9946)
+
+Kubernetes Ingress Resource: Kubernetes ingress resource is responsible for storing DNS routing rules in the cluster.
+Kubernetes Ingress Controller: Kubernetes ingress controllers (Nginx/HAProxy etc.) are responsible for routing by accessing the DNS rules applied through 
+ingress resource.
+
+CONFIGMAP-A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps 
+as environment variables, command-line arguments, or as configuration files in a volume..
+
+SECRESTS------storing the confidential data like keys,tokens and passwords etc..
+
+INIT CONTAINERS---which is started(by initialising the passwords etc) before the application container starts.
+INIT containers are always run to completion.
+Each INIT container must complete successfully before the next one starts.
+
+kubectl create deploymennt my-app --image=nginx --dryrun -o yaml ----------------------to create deployment using commandline
+kubectl create deploymennt my-app --image=nginx --dryrun -o yaml>nginix-deployment.yaml----------my-app deployment redirect to ngnix-deployment.yaml
+kubectl create -f ngnix-deployment.yaml
+kubectl get pods
+kubectl get deployments
+kubectl get pods
+kubectl scale deployment my-app --replicas=5(to scale replicas to 5 in commandline)        kubernetes interview----trietree video 50mins
+kubectl get pods
+kubectl describe pod podname(here check for image=nginx)
+kubectl set image deployment my-app ngnix=ngnix:latest
+kubectl rollout history deployment (u find revision 1 and 2 in outpput)
+kubectl rollout history deployment my-app --revision=2-------here u find the image updated to ngnix:latest
+kubectl rollout history deployment my-app --revision=1-------previous image i.e ngnix
+kubectl rollout undo deployment my-app --to-revision=1--------to go output of revision 1
+kubectl get pods
+kubectl describe pod podname------get the image like ngnix:latest
+kubectl rollout history  deployment--
+
+POD EVICTION----------when pod reached the starving of resources,kubelet evict that pod and keep that pod in failed state.if that pod managed by Deployment
+                      that pod will be recreated to be scheduled by kubernetes.. 
+pods are in pending state because of no enough resources (cpu or memory) and also if there are liveness and readiness probe issues.
+WHY DOES A CRASHLOOPBACKOFF  OCCUR----
+1.The application inside the container keeps crashing
+2.some of the parameters of a pod or container have been configured incorrectly
+3.An error is has been made when deploying kubernetes .
+
+HOW CAN I  SEE IF THERE ARE CRASHLOOPBACKOFF  IN MY CLUSTER---
+kubectl get pods --namespace ngnix-crashloop-------o/p  in STATUS --crashloopbackoff-kubectl describe pod(will get clear output)
+to get the ip of a pod------------kubectl get pods -o wide 
+which network plugin you are using--------calico,falnnel and weave,canal etc......  kubectl get pods -A
+
+                                                    DOCKER
+
+RUN.------------ Mainly used to build images and install applications and packages. Builds a new layer over an existing image by committing the results.
+CMD------------. Sets default parameters that can be overridden from the Docker Command Line Interface (CLI) when a container is running.
+ENTRYPOINT------ Default parameters that cannot be overridden when Docker Containers run with CLI parameters.
+
+(https://www.youtube.com/watch?v=rSz3R2CPv5o)---video------------COPY VS ADD
+COPY-----one or more files from source copied to destination
+ADD-----addiional to COPY----ADD copy the files from a URL(like http://files.samples.com.) and also automatically extracts the archive files.....
+
+COPY----add the files from local system into the docker image(u can copy one or more files)--i.e source to destination. COPY fi and f2 destination/dir
+ADD-----add the files same as COPY but in ADD u can copy files from URL also..ex---ADD http://foo.com/hello.txt  destination/dir  [download the files from URL i.e
+https://file-examples.com/index.php/sample-documents-download/ (URL)----------
+ADD-----u can copy and extract the files from a tar.gz file
+https://developer.blender.org/F22159------to download the sample tar.gz file--------------------------
+
+                                                 CMD--------ENTRYPOINT--(https://www.youtube.com/watch?v=xaJqV6XTqOU)
+
+CMD is command to execute the some commands in dockerfile like 'yum install git -y' (dockerfile---"yum","install","-y","git")if u want install  the httpd instead of git u can replace the git with httpd
+(yum install httpd -y--------it means in CMD we can override the arguments. like httpd instead of git---for httpd   (dockerfile--"yum","install","httpd","-y")
+if u want to run the CMD with git while creating a container-(dockerfile--ENTRYPOINT("yum","install","git","-y")--
+
+ENTRYPOINT it is not overriden,it will execute the command as u mention in ENTRYPOINT(in dockerfile)  --like ENTRYPOINT-"yum","install","git","-y"
+docker run demobox(ex--image name) httpd-(but it executes as per ENTRYPOINT in dockerfile--(not as docker run demobox httpd)chk video
+if u provide any arguments(like httpd) otherthan git(ex)it will append the existing (here httpd is appending and existing is git(and install git and httpd )no overriden.
+even u provide multiple arguments like httpd,telnet,tree etc.it will create all three arguments with git   meaning 4  are installed git,httpd,telnet and tree..
+docker inspect containerid(latest)---will show yum install -y including git,httpd,telnet and tree.
+So if u want continue with one command(yum install git -y(ex) go wwith ENTRYPOINT(no override)
+
+                                                  EXECUTION with both CMD AND ENTRYPOINT----
+DOCKERFILE-------
+FROM centos:centos7
+ENTRYPOINT ["YUM","INSTALL","-Y"]---didn't mention any package name like git ...
+CMD ["git"]--------------
+docker run demobox(image name) ------installing git  ---ENTRYPOINT  will take the argument from CMD(git) and installing.
+docker run demobox httpd-------------installing httpd---ENTRYPOINT  will take the argument from CMD(httpd)--placed httpd instead of git in CMD..
+docker run httpd telnet--------------installing httpd and telnet
+                                               
+                                                   MULTIPLE CMD's (in docker file)
+
+dockerfile--------
+FROM centos:centos7
+CMD ["yum","install","-y","httpd"]
+CMD ["Echo","Hello valaxy"]
+
+docker build -t demobox .(. meaning )same directory
+docker run -it demobox-----------
+it will c reate only hello valaxy it didn;t take 1st CMD VALUE i.e yum install git -y  meaning that[if u have multiple CMD entries in docker file it will take the
+latest CMD argument (end of the file)i.e in dockerfile..........
+docker run demobox technologies(argument)----------it will execute the technologies as a CMD.....
+
+                                                      MULTIPLE ENTRYPOINTS( in dockerfile)
+Dockerfile-------
+FROM centos:centos7
+ENTRYPOINT ["yum","install","-y","httpd"]
+ENTRYPOINT ["echo","Hello valaxy"]
+docker run demobox---------here also it will take the last entrypoint(Hello valaxy)..
+docker run demobox technologies---------here technologies argument appended the hello valaxy---o/p is Hello valaxy Technologies
+SHALL WE UPDATE ENTRYPOINT cmd OR ENTRYPOINT INSTructions while creating a container-----------
+yes----docker run --entrypoint useradd demobox valaxy(argument)
+docker ps -a
+
+DOCKER LOGGING DRIVER-------Which caches the container logs in json file....
+DOCKER CUSTOM BRIDGE NETWORK-------USER DEFINED NETWORK-----------all the containers running in this customised network or user defined network...	
+DOCKER PORT FORWARDING-----when ever if u want expose ur application with a specific port and if u want access from ur localhost..
+
+HOW TO CHECK THE IMAGE VULNARABILITY---------using docker scan(docker scan image (imagename)
+
+
+                                                                     
+  
+
+
+
+
+
+
+
+

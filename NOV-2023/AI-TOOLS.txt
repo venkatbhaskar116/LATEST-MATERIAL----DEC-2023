@@ -1,0 +1,6 @@
+Tools I use to be 2 times more Productive | Work Life Balance-----https://www.youtube.com/watch?v=cpMFEzvSxRs
+
+otter.ai -----converting voice to text---------------records in cloud.
+draw.io-------providing predefined images for any object like ec2 instance,s3 bucket and even like kubernetes.
+              Useful for diagrams in teaching etc..
+GITHUB codespaces--------
