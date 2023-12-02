@@ -1,0 +1,44 @@
+
+https://serdem.medium.com/docker-03-handling-docker-volumes-with-hands-on-cb9a5bb1c045-------------docker volumes hands on
+
+
+How to connect to EC2 instance? I've LOST my private key! (Amazon Web Services | AWS | SSH | SSM)----https://www.youtube.com/watch?v=LzBje3xSwmQ
+https://antonputra.com/amazon/how-to-connect-to-ec2-instance/#recover-key-using-another-ec2-----document for steps
+
+/dev/sda1---root volume
+i-0c4073a6a11b30b88---instance id----old instance id
+
+ami-0f5ee92e2d63afc18--------old instance ami
+
+ap-south-1a---az------availability zone
+
+vol-027258ab9e50aa703----volume  id--old instance
+
+
+new instance id ------i-005b04699fe0e3462
+
+
+
+
+
+new instance id----(i-005b04699fe0e3462)-----------new instance created
+detach old instance volume ----------go to oldinstance ---volumes --select old instance volume and in actions detach volume
+attach this volume to the newly created instance.(recover-my-instance)---to attach volume--go to volumes(leftside),keep the recover-my-instance(newly created instance)running---
+select the volume(old instance)---actions---click on attach volume----give the new instance name------notedown the device name(/dev/sdf)
+
+*****************************************************************************************************************************************************************
+How to Recover AWS Ec2 Instance Key | Cloud Architect-------------https://www.youtube.com/watch?v=IbaYMFyH89E
+
+create new instance name it as server-with-key
+create one more instance with new key(Recovery)
+stop the server-with-key
+go to volumes and select the server-with-key volume and go to actions and detach it(server-with-key will be in stoped state)
+go to the Recovery instance and in actions select attach ----give the instance name to attach
+connect to Recovery instance (ssh -i ubuntu@publicip]  Recovery.pem and lsblk -----create a directory in /mnt/root-volume----mount the volume into the directory
+[mount -o nouuid dev/xvdf1/mnt/root-volume(here /dev/xvdf1 is the disk/volume name)--------df -h(mounted to /mnt/root-volume)--
+cd /home/ubuntu/.ssh/authorized_keys-------copy this key to the newly mounted volume directory
+cat authorized_keys >> /mnt/root-volume/home/ubuntu/.ssh/authorized-keys
+unmount the mounted disk-----umount /mnt/root-volume
+df -h --------------no disk
+stop the Recovery instance to detach the volume-----go to volumes-----(7.53min)select server-with-key---actions ---detach---state is available---
+attach it back to the main server(server-with-key)---actions ---attach---select the instance to attach i.e server-with-key---change device name to /dev/xvda

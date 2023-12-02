@@ -1,0 +1,25 @@
+https://phoenixnap.com/kb/ssh-permission-denied-publickey------ansible ssh error
+*******************************************************************************************************************************************************************
+Getting Started with Ansible (Part 1)-----------https://www.youtube.com/watch?v=0CRiWGV57WE-----SETUP ANSIBLE USER FOR ANSIBLE(success)
+5th-8th mins
+ANSIBLE-MASTER:
+useradd -m ansible
+usermod -aG ansible(groupname) ansible(username)--------usermod -aG ansible ansible
+su - ansible
+ssh-keygen
+cd .ssh
+cat id_rsa.pub
+                           
+ANSIBLE-TARGET             sudo adduser ansible
+                           sudo usermod -aG sudo ansible
+                           sudo visudo
+                           ansible ALL=(ALL:ALL) NOPASSWD:ALL------------
+                           su - ansible
+                           mkdir .ssh
+                           vi .ssh/authorized_keys               
+                           paste here ansible-master id_rsa.pub key
+                           try for ssh from ansible master to the target server ip address
+
+IF U MENTION THE IPADDRESSES IN /ETC/ANSIBLE/HOSTS FILE ---ansible all -m ping,if error----modify the /etc/ansible/ansible.config
+[defaults]
+inventory = /etc/ansible/hosts----then its works---

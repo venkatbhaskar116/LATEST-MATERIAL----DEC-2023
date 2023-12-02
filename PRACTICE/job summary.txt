@@ -1,0 +1,4 @@
+Devops engineer with 4+yrs of experience in designing,implementing and  maintaining AWS based infrastructure,ensuring  high availability,scalability and security.
+Knowledge of containerization and orchestration technologies particularly like Docker and Kubernetes for efficient application deployment and management.
+Implementing the jenkins CICD pipeline for deploying the application into the cloud environment.
+Administring the AWS services like EC2,VPC,CLOUDFRONT,CLOUDFORMATION and ROUTE53.

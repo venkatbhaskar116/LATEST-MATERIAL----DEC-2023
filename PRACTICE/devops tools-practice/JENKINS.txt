@@ -1,0 +1,108 @@
+devopscoach youtube------------
+coachdevops.com---------for doumentations
+
+
+
+
+
+
+
+
+
+###java installation steps-----------------https://www.linode.com/docs/guides/how-to-install-openjdk-on-ubuntu-20-04/
+
+###How to set Java environment variable in Ubuntu-----https://medium.com/@noah24.kim/how-to-set-java-environment-variable-in-ubuntu-4244311211ad
+
+###JENKINS INSTALLATION-------https://www.jenkins.io/blog/2023/03/27/repository-signing-keys-changing/----------------------------04-11-23
+
+###curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+apt update -y
+apt install jenkins
+sudo systemctl status jenkins---------running
+
+
+###SETTING UP JENKINS_HOME AND PATH FOR JAVA------https://medium.com/@noah24.kim/how-to-set-java-environment-variable-in-ubuntu-4244311211ad
+vi ~/.bashrc
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export PATH=$PATH:$JAVA_HOME/bin
+:wq
+
+source ~/.bashrc---------------------------------SUCCESS---to reflect the environment variables--------
+**************************************************************************************************************************************************************
+
+Setting Up a CI/CD Pipeline Using Git, Jenkins, and Maven---------https://medium.com/@GeorgeBaidooJr/setting-up-a-ci-cd-pipeline-using-git-jenkins-and-maven-6bd6f3f52886
+Jenkins Master and Slave Architecture------https://medium.com/edureka/jenkins-master-and-slave-architecture-e3d6c4728945
+***************************************************************************************************************************************************************
+*****Jenkins Slave setup on Ubuntu | Create Jenkins Slave Node | Integrate Jenkins Master and Slave Node----https://www.youtube.com/watch?v=wev8WgKDDbY
+
+-----------------------------------------------------------------&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&_----------------------------------------------
+JENKINS MASTER SLAVE CONFIGURATION----------------------------------
+In MASTER-----generate ssh-keygen as ubuntu user   note the copy of id_rsa(private key)
+[if for user jenkins,create user,give sudo previliges in visudo,passwordaythentication yes in /etc/ssh/sshd_config and soon]
+In Jenkisn UI,manage jenkins--manage nodes---create new node----
+name-------------------------------any name to node
+no of executors--------------------
+remote root directory--------------/home/ubuntu(incase of ubuntu)
+Usage------------------------------Use this node as much as possible
+Launch method----------------------Launch agents via  SSH
+Host-------------------------------ip of slave(target)
+Credentials------------------------click on add(jenkins)---
+open in new window
+DOMAIN-----------------------------global
+Kind-------------------------------SSH Username with private key
+Scope------------------------------global
+Username---------------------------ubuntu----passwd not necessary(if necessary,u can give passwd for ubuntu as ubuntu,jenkins as jenkins)---
+finally give this credential name in CREDENTIALS(the name will be shown here)-----------click on add
+Host Key Verification Strategy---Known hosts file verification strategy
+Availbility---------------------KEEP THIS AGENT ONLINE AS MUCH AS POSSIBLE---------click on save
+
+
+check for newnode in online----------
+if offline---------------------------https://www.youtube.com/watch?v=Se7JtzFVZGE-----	[How to Setup Linux Master Slave Agent in Jenkins with SSH-KEY ?| EP 05 | Common Mistakes by Engineer]
+create NEW job with freestyle apply and save--------
+click on job---------click on restricted this job to node--------under label(give the newly created node name))---------aplly and save --click on build now
+###[https://www.howtoforge.com/tutorial/ubuntu-jenkins-master-slave/-----How to Setup Jenkins Master and Slave on Ubuntu]-to execute the job on selected slave machcine
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7777
+https://www.youtube.com/watch?v=tm69qZXYzRU&list=PLJwvtUqYDmA6284GlQE_tHbQT2JXBXPua----How to Reset Jenkins Admin Password | Recover Jenkins Admin Password | Jenkins Password reset
+                       DEVOPS COACH------------JENKINS PRACTICE VIDEOS
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+devops coach youtube----------jenkins(34 videos)--------07/11/23
+
+##How to reset the admin password in jenkins-----------How to Reset Jenkins Admin Password -----https://www.youtube.com/watch?v=tm69qZXYzRU&list=PLJwvtUqYDmA6284GlQE_tHbQT2JXBXPua
+1.open the ubuntu terminal with jenkins public ipaddress
+2.cd /var/lib/jenkins/config.xml
+<Usesecurity>True<Usesecurity>------------change it to false
+3.sudo service jenkins restart
+4.refresh the jenkins UI-it will open---------manage jenkins-----configure global security----under security realm section ---select jenkins own user database--apply and save
+5.manage jenkins---manage users------click on admin---click on configure----in password section------change it-apply and save
+
+
+##Jenkins Workspace Cleanup(after every build)-----https://www.youtube.com/watch?v=21CSe2lukIs&list=PLJwvtUqYDmA6284GlQE_tHbQT2JXBXPua&index=2
+download workspace cleanup plugin
+create 2 jobs for freestyle and pipeline
+select any one of job-----click on configure------post-build actions------add post-build action-----delete workspace when build is done---- apply and save
+(u can also check for advanced options))----
+check in /var/lib/jenkins/workspace
+go to job --build now---------check workspace---here u doont find the project folder(cleaned up
+
+
+
+####---
+
+
+
+
+
+
+
+
+
+
+
+

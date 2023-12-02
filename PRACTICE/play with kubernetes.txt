@@ -1,0 +1,20 @@
+https://labs.play-with-k8s.com/p/ckgccqa4rl3g00cjirq0#ckgccqa4_ckgccrq4rl3g00cjirr0
+
+kubeadm join 192.168.0.13:6443 --token j5cdtz.7ivmt38hl8qzhpln \
+        --discovery-token-ca-cert-hash sha256:f042b175bb0fa272dd20f9dd301a2622358724f66258babf257a41bb96917e92
+
+kubectl explain pod
+
+https://devopscube.com/learn-kubernetes-complete-roadmap/-------------devopscube
+
+https://github.com/techiescamp/vagrant-kubeadm-kubernetes---kubernetes setup
+
+*********************************************************************************************************************************************************************
+Play With Kubernetes | Free Kubernetes Cluster Playground | Thetips4you----https://www.youtube.com/watch?v=bkrcAjclqYI---thetips4you
+How do I exit pod terminal?
+To exit the container's shell and return to your terminal, you can press "CTRL + D" or run the "exit" command.04-
+
+kubeadm join 192.168.0.18:6443 --token 1p8hzr.ckntvl3pxjue6olo \
+        --discovery-token-ca-cert-hash sha256:16a8da1caeabf29d6bc052ed1d5ae9fcd20d1a779e17e139bec31e3554a1f18e	
+
+to maximize or minimise the screen use the command -----alt+enter

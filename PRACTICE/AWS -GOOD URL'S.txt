@@ -1,0 +1,18 @@
+	-----------Tech Nest------intervieww aws
+
+https://www.youtube.com/watch?v=vrL-WpXNook-------AWS User Group India
+
+https://www.tutorialworks.com/linux-vm-vagrant/?utm_medium=sidebar
+---------------------------------------------------------------------------------------------------------------------------
+https://github.com/bregman-arie/devops-exercises/tree/master/topics/kubernetes#helm=------
+
+https://medium.com/devops-dev/devops-ci-cd-project-jenkins-shared-lib-5c69ccb9c1a9
+
+What happens to running pods if if you stop Kubelet on the worker nodes?
+What happens if Kubelet goes down?
+If the kubelet crashes or stops on a node, it cannot communicate with the API server and the node goes into a not ready state. Run kubectl describe node [name] and 
+look in the Conditions section—if all the conditions are unknown, this indicates the kubelet is down.
+
+What is the impact of upgrading kubelet if we leave pods on the worker node?
+Restarting kubelet, which has to happen for an upgrade will cause all the Pods on the node to stop and be started again.
+	

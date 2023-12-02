@@ -1,0 +1,19 @@
+                                            DEVOPS SHACK
+
+How To Explain A Complete DevOps Project In Interview | DevOps Projects----------https://www.youtube.com/watch?v=Lpz1ua3n_bU
+
+REQUIREMENT----------------------
+
+1.Client requirement is to change background colour of his java based application,so that he/manager rise a jira ticket for that.
+  Developer will atake that ticket and work on that,then he tested that code on his machine(local) once success he push that code to github.
+2.need to write jenkins CICD pipeline along with multiple stage to deploy the application.
+3.Compile the code--[checking for syntactical errors](1st stage) and run Unit test cases(checking the functionality of the code) in STAGE 2.
+4.In 3rd STAGE,Code Quality Check using SonarQube---checking for any vulnarabilities,bugs etc.ans also checks for how much percentage of the code is tested.
+5.Maven,will package the application  and to generate a executable and portable format and build the application.
+6.OWASP-DEPENDENCY check on the soucrce code for vulnarability checks and on jarfile
+7.we will DEPLOY the application artifact which is generated to the NEXUS---------
+8.AFTER build,need to have a docker file to build the image and scan that image using trivy,then push that image to docjer hub.
+9.IF There is any vulnarabilities,with the best available image(versioned) will be scanned again and pushed to dockerhub
+10.with this dockerfile,we are going to write k8s manifest file(adding docker image here)and deployed to k8s.
+11.Once deployed to k8s monitor the app with PROMETHEWS AND GRAFANA 
+OPTIONAL TIP------with pentesting(with OWASPZAP tool),if u find any vulnarabilities need to inform to developer. 

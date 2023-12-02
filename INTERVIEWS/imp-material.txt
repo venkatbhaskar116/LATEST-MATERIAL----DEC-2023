@@ -1,0 +1,19 @@
+where do you have stored the secrets  ----------
+IN jenkins--------credentials or using hashi-corp vault
+AWS CODEBUILD-------AWS SECRETS MANAGER.
+GITLAB CICD----------------in variable section---we store the secrets and we reference them.
+
+In our organization----the docker image size is very huge and that was also concernig wiwth the security of docker image
+    USING the MULTI-STAGE docker build and distroless images we reduce the image size and also we added the security by removing the packages that are installed in the images(
+distroless images will do that job).
+
+IN K8S------
+some pods are consuming more resources so that restricting the resources and limits in deployment file.so that the pod is restricted with sufficient resources only
+If any pod needs more  resources approach the development team and ask them why pod needs more resources and try to solve the problem
+Some times application is down u went to the pod and checks the logs.
+WWHEN u deploy the application,and u notice that the application went down or unresponsive ----
+1.u went to k8s pod and try to access the logs----if it is a java application go to thread dumps and heapdumps and sit wiwth development teamd and solve it.
+
+ 
+IF DOCKER CONTAINERS ARE RUNNING WITH ROOT    HOW DID YOU MODIFY THEM---------------
+
