@@ -1,0 +1,132 @@
+Day-6 | Operators | Python for DevOps #python #abhishekveeramalla----------------https://github.com/iam-veeramalla/python-for-devops/tree/main/Day-06/01-Notes
+
++
+-
+*
+/
+//---floatdivision---the output contains only numbers (means no decimal values) ex 3/2=1.5 but in floatdivision(3//2)=1 only.no decimal values.
+
+
+modulus(sesham in telugu)---16%13 (% indicates percentaile)--o/p is after dividing the 16 with 13 u will get balance 3 i.e modulus.that 3 is called reminder.
+                    ARITHMETIC OPERATORS 
+
+open codespace terminal--issue python and enter
+>>>16/13----division--------1.22222
+>>>16//13----floatdivision---1(instead of 1.222)--no decimals
+>>>16%13-----.....modulus 3
+to comeout------press control+d    OR
+                type exit()
+********************************************************************************************************************************************************************
+                 ASSIGNMENT OPERATORS------
+
+assigning a value to a variable.
+a = 1(here = is assignment operator)
+a+=2---o/p is 3 (it is adding a value 2 to a(i.e 1)-----here + is addition assignment
+a=3
+a-=2--1--------here - is substraction assignment
+******************************************************************************************************************************************************************
+
+BITWISE OPERATORS--------------NO USE-
+
+IDENTITY OPERATORS-------------
+----------------------------------------------------
+IDENTIFYING THE difference of values----------like 
+a=2
+b=2--------------a is b---True---------Boolean value
+                 a is not b----False---Boolean value
+
+quotient means ---10/5=2   2 is the quotient(result of division)
+
+In reality for example if u want to compare the 2 ec2 instances which are same in cpu and ram then
+ec2_instance_1_ram is ec2_instance_2_ram-----True----boolean value(using identity operator u can compare the ec2 instances which are equal)
+****************************************************************************************************************************************************************
+LOGICAL OPERATORS-----AND--OR----- NOT
+--------------------------------------
+IF 2 STATEMENTS are true then o/p is true----------
+a=2    true                                             c=2
+b=2 ---here a is b(true)                                d=1  false(here c is d is false)
+if two statements are true then o/p is true
+if one stmt is true and a stmt is false flase
+if both stmt's are false then o/p is false
+*********************************************************************************************************************************************************************
+RELATIONAL OPERATORS--------------
+a > b---------greaterthan
+a<b-----------lessthan
+a>=b----------greaterthan or equalto
+a<=b----------lessthan or equalto
+a==b
+********************************************************************************************************************************************************************
+
+
+-------------------------------------------------------------------------------ASSIGNMENTS-------------------------------------------------------
+        ARITHMETIC OPERATORS------------
+1. s = 22
+   t = 11
+
+sum_result = s + t
+difference_result = s - t
+product_result = s * t
+quotient_result = s / t
+
+print("Sum:",sum_result)
+print("Difference:",difference_result)
+print("Product:",product_result)
+print("Quotient:",quotient_result)
+____________________________________________________________________________________________________________________________________________________________________
+2.COMPARISON OPERATORS---------------
+d = 6------------my version
+f = 3
+
+print(d > f) -----True
+print(d < f) -----False
+print(d >= f)-----True
+print(d <= f)-----False
+print( d != f)----True
+
+a = 10------------------abhishek version--------------
+b = 5
+
+less_than = a < b
+greater_than = a > b
+less_than_or_equal = a <= b
+greater_than_or_equal = a >= b
+equal = a == b
+not_equal = a != b
+
+print("a < b:",less_than)
+print("a > b:",greater_than)
+print("a >= b:",greater_than_or_equal)
+print("a <= b:",less_than_or_equal)
+print("a == b:",equal)
+print("a != b:", not_equal)
+
+o/p----
+a < b: False
+a > b: True
+a >= b: True
+a <= b: False
+a == b: False
+a != b: True
+-----------------------------------------------------------------------------------------------------------------------------------------------
+LOGICAL OPERATORS---------------------
+
+x = True
+y = False
+
+and_result = x and y
+or_result = x or y
+not_result_x = not x
+not_result_y = not y
+
+print("x and y:",and_result)
+print("x or y:",or_result)
+print("not x:",not_result_x)
+print("not y:",not_result_y)
+
+
+x and y: False
+x or y: True
+not x: False
+not y: True
+-----------------------------------------------------------------------------------------------------------------------
+ASSIGNMENT OPERATORS-----------checck in video--------------

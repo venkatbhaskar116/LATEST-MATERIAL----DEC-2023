@@ -1,0 +1,90 @@
+ABHISHEK-PYTHON    DAY-4    
+
+FUNCTION----------calculator.py file
+A function is defined to execute the task as below.
+
+def (definition) [keyword]  addition(function name) ():
+    addition = (variable1 + variable2)
+    print (add)----------like this --for addition one funtion and for substraction one function etc
+-----------------------------------------------------------------------------------------------------------
+if a = 10--------------variables
+   b = 5
+def addition():
+    add = a = b
+    print(add
+
+def sub():
+    sub = a -b 
+    print(add)
+
+
+def mul():
+    mul = a * b
+    print(mul)
+
+addition()
+sub()
+mul()------------------execute(python calculator.py(filename)
+IMP----after writing the function-- u need to explicitly invoke(call) the function at the end(like addition,sub,mul and div).
+
+With FUNCTIONS---
+1.Readability----when u send the code for review(after making changes) he can easily find if there is any bug etc..
+2.Re-Usability(modularity)--
+3.Debugging-------easy to identify
+practice for s3,ec2 or for creating jira ticket in python like addition,sub as above
+
+MODULES-------------
+                    Modules are simply group of functions.it is reusable for many teams or projects by modifying any function(part of module) or complete module.
+for example u have calculator file and other team wants to write a file with advance features,that team can use this file.
+create a file adv-cal.py-----
+import calculator(previous file name) as basic_calc
+
+basic_calc(execute it----u will get o/p as previous calculator file)check in codespace[BACHIcodespace]
+u can import single function or multiple(like addition only)
+u can replace the print with return -----as velow
+
+def (definition) [keyword]  addition(function name) ():
+    addition = (variable1 + variable2)
+    print (add)----------like this --for addition one funtion and for substraction one function etc
+-----------------------------------------------------------------------------------------------------------
+if a = 10--------------check in calculator.py for changes 
+   b = 5
+def addition(num1,num2):
+    add = a + b
+    return add
+
+def sub(num1,num2):
+    sub = a - b 
+    return sub
+
+
+def mul(num1,num2):
+    mul = a * b
+    return mul
+
+print (addition(10,5))
+print (sub(10,5))
+print (mul(10,5))--------------45 min complete
+
+PACKAGES-------------------
+              IS COLLECTION OF MODULES--
+aws----boto3------module name of aws
+github-----github--module name of github
+jira---jira--module name for jira
+
+u can search for PACKAGES in pypi(python project index) like an dockerhub(in google---pypi---search for any package)-----53min
+to know which packages are installed ------------pip list
+
+
+VIRTUAL ENVIRONMENT--------Creating virtual environment(logical seperation in a  server)for your different projects in a server.
+pip install virtualenv
+u can create packages in any virtual environment wwhich are not conflicted with other venv's.
+ssh to server
+python -m venv project-abc------create a folder for project-abc
+                       xyz
+to connect to venv project-abc--------source project-abc/bin/activate------------u can into project-abc
+to comeout from the virtual environment project-abc just issue----deactivate               (1h 06min)
+IN SIMPLE,VENV'S ARE LIKE NAMESPACES IN KUBERNETES-----------u can create a package and use it for that venv only
+virtual environments are used by the devops engineers in realtime more than developers---for creating the requirement of developers.
+
+

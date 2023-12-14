@@ -1,0 +1,40 @@
+Beginner & Intermediate Level Python Interview Q&A for DevOps | Day-16------------https://www.youtube.com/watch?v=UzILixH4Odw
+
+Beginner & Intermediate Level Python Interview Q&A for DevOps | Day-16-----------https://github.com/iam-veeramalla/python-for-devops/tree/main/Day-16
+
+
+1.DESCRIBE A REAL WORLD EXAMPLE HOW YOU  USED PYTHON TO SOLVE A DEVOPS CHALLENGES------------
+a)GITHUB-JIRA INTEGRATION
+b)WEBHOOK TRIGGERS
+c)FILE OPERATIONS
+
+GITHUB-JIRA INTEGRATION-----------     EXPLAIN THE BELOW PROJECT---------------
+     We have sourcecode in github and jira for tracking the entire work.
+we get a task from development team, whenever a developer comes pull request on github and comments /jira, a python script should be triggered and that script
+should create a jira ticket with all info of the PR (or) an github issue.
+FOR this i wrote a python script(flask based application),it will expose an API and this API shared with GITGUB.
+So whenever a developer comments /jira--github webhook is triggered and it sends -payload to API.
+Now API WILL READ the PR and check if comment /jira, it will talk to jira API and it will create  a ticket in JIRA.
+
+
+2)HOW CAN U SECURE THE PYTHON CODE AND SCRIPTS------------
+USING input variables,commandline arguments and env vars.
+
+3)EXPLAIN THE DIFFERENCE BETWEEN THE MUTABLE ADN IMMUTABLE OBJECTS-------- 
+lists  are mutable and tuple is immutable.
+
+4)EXPLAIN THE USE OF VIRTUALENV-------in video 15th min
+Here if u want to install the different package versions (like boto3 3.11.2 and 3.8.5)in the same machine,actually it is not possible(why means team 1 writes some python
+programme,it is not supported by one version and viceversa) here virtualenv is created to rite a programme with supported version.
+Divide the ec2 instance into two parts and team 1 and team 2 connects to ec2 instance with ssh and for team 1 issue the command is 
+source /myenv/bin/activate-----------team 1
+same command-------------------------team 2
+
+5)WHAT ATE DEVORATORS----------------16 min
+DECORATORS are used to invoke a particular action before the execcution of the function.
+LETS say you want to validate if a user has a logedin session before invoking a particaaular API u can use the DECORATOR.
+
+
+
+6)HOW DOES EXCEPTION HANDLING WORK IN PYTHON------
+

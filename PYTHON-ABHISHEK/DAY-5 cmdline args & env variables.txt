@@ -1,0 +1,80 @@
+COMMANDLINE ARGUMENTS---------passing the values to a programme---[aws s3 ls---here aws is the python based programme,s3 and ls are input values to that aws programme]
+Using SYS module we will read the input values in the programme.U need to import the SYS module in the  programme.
+calculator.py
+
+import sys
+def addition(num1,num2):
+    add = num1 + num2
+    return(add)
+
+def sub(num1,num2):
+        sub = num1 - num2
+        return s 
+
+num1 = sys.argv[1]
+operation = sys.argv[2]
+num2 = sys.argv[3]
+
+python calculator.py 2  addition 3
+if operation  =="add":
+output = add(num1,num2)
+print(output)
+
+python calculator.py 2 addition 3  --it will give "2" + "3" = 23 because u are adding "2"(string) + "3"(string)--need to convert to integers.
+
+num1 = int(sys.argv[1])-----------------converting the string values into integer----------------
+operation = sys.argv[2]
+num2 = int(sys.argv[3])
+python calculator.py 2  addition 3---o/p is 5
+
+[commandline arguments are the input values passing into the programme directly (i.e calculator.py 2 addition 3)]no need to modify in the programme
+FOR THIS
+u need to write multiple functions based on requirement(like addition,sub,mul) and write arguments with module(sys)----then write the operation details with arguments
+with module------then execute
+
+
+import sys
+def addition(num1,num2):
+    addition = num1 + num2
+    return add
+
+num1 = sys.argv[1]
+operation = sys.argv[2]
+num2 = sys.argv[3]
+
+if operation == "add"
+   output = add(num1,num2)
+   print(output)
+
+
+
+ENVIRONMENT VARIABLES---------are used for sensitive info like passwords,tokens,api keys and certificates.
+if u use some sensitive info in the command line,if that used in CICD,automation environment eerybody can see that sensitive information.
+so just by using ENV VAR u can put in the programme using import OS and print os.getenv("password") or ("apitoken").25th min
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                  PYTHON 
+COMMANDLINE ARGUMENTS-----------
+                     THESE are the input parameters passed to the script(programme) when execucte them.
+modules----
+sys
+getopt
+argparse
+
+as--import sys
+    import getopt
+    import argparse
+ENVIRONMENT VARIABLES------
+                     These are typically set by the USER or Operating System
+                     Accessible to all the programmes and processes  running on the system.
+These are useful for storing the system-specific info,configuration settings and sensitive information.
+U can access and manipulate the env variables using import OS module.(import OS).
+Wwe can retrive all the env variables set on the system or specific env variable .
+ Retrieving the value of the "PATH" environment variable---------------------
+path = os.environ["PATH"]
+print(path)
+
+

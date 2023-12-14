@@ -1,0 +1,32 @@
+Python Real Time UseCase with Dictionaries | Day-11 - Python For DevOps series|-----https://www.youtube.com/watch?v=HvNU4dupQkg
+
+LISTS  ----in [] (square brackets)----mutable-- (u can change)type wof array
+DICTIONARY----IN {}(CURLY brackets)---immutable(u can not change)--values are seperated by :(colan symbol)---using key-value pairs(like name=bachi)
+But in LIST just u ill give the characterstics of a person or instance etc...like baba,10 etc..But after some days if user asks u what is 10 u cannot remember.
+Whereas in DICTIONARY --u will give all these detailed like
+new_dict = {'name': 'bachi','age: 10, 'designation': 'devops engineer'}
+Even after somedays if any body asks for details u can simply says as per the key-value pair details in the dictionary.like what is 10,  its an age.
+
+list of names------['bachi','babu','james']
+list of dictionarys--[                       means that group of dictionarys in a list.--20 min in video
+
+{     
+
+
+  },
+
+{
+
+
+     },
+
+{
+
+     }
+
+]
+
+--------------------------------------------
+realtime usecase ---	get pull request info from github using python?------25th min
+
+

@@ -1,0 +1,5 @@
+IF-----if condition is true it wiwll be executed
+else--if condition is false it  will skip
+
+IMP-----the block of code is executed only if contains two conditions only[if,else]
+        the block of code is executed more than two conditions   using ELIF-------------------------

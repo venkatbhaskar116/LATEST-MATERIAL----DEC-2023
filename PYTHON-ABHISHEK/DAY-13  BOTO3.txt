@@ -1,0 +1,40 @@
+                                                               BOTO 3
+Boto3 Begineer to Advanced Guide with Projects | Day-13 | Python For DevOps----https://www.youtube.com/watch?v=3ExnySHBO6k
+
+
+LinkedIn: https://www.linkedin.com/in/abhishek-...
+GitHub: https://github.com/iam-veeramalla
+Medium: https://abhishekveeramalla-av.medium....
+
+
+
+
+
+Boto3 is used to connect with aws,no need of aws cli,ui etc...
+Boto3 is used in serverless(aws lambda)
+TO create aws resources like ec2,s3 [go to boto3 docs---search for s3 or ec2 ---check for code(syntax)---in boto3 docs u can search anything and u can.
+In boto3.client for an resource(s3 or ec2)----=---here client means resource.(but resource is not supported in future---use boto3.client is recommended)
+IN AWS to find list of s3 buckets u need to sign in and aws s3 ls      but using BOTO3 u can dirrectly get the list of buckets very quickly.
+Even for TERRAFORMM and CFT U need to sign in.
+
+aws infrastucture like ec2 or s3 etc...are chargable
+AWS LAMBDA is serverless,it will create and teardown the infra as per application requirement.
+If any ec2 instance is not used since a year OR  ebs (gp2) is not used since 5 months u should notify to the developers regarding them(for cost basis).
+So all these factors are considered for cost optimizatio
+n because they are automated in aws LAMBDA through a script.That is COST OPTIMIZAZTION using LAMBDA.
+CLOUDWATCH is used to to trigger the events for LAMBDA fucntion.
+
+Devops engineer should responsible for cost optimization by identifying the stale(old and unused)resources ,remove them if not required by notifying to edvelopers
+through mail(sns).Devops engineer will have access to delete those stale resources that are nolonger required.
+
+COST OPTIMIZATION using delete option-------------------------
+Using LAMBDA function----write a python code using a boto3 module(inside python script) that any stale resources are there in aws(ebs or ec2 or s3) to delete them.
+Attach LAMBDA function to CLOUDWATCH for event triggered(uploaded object to s3 or ec2 instance created etc..)
+
+1.Identify all the ens snapshots
+2.Filterout the stale snapshots.------(And delete them).
+
+DEMO--------(github.com/iam-veeramalla)---day -18   readme file----[https://github.com/iam-veeramalla/aws-devops-zero-to-hero/blob/main/day-18/README.md].
+
+
+

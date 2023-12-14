@@ -1,0 +1,50 @@
+Loops in Python (for and while)
+Introduction
+Loops are a fundamental concept in programming, and they allow you to perform repetitive tasks efficiently. In Python, there are two primary types of loops: "for" and "while."
+
+For Loop
+The "for" loop is used to iterate over a sequence (such as a list, tuple, string, or range) and execute a set of statements for each item in the sequence. The loop continues until all items in the sequence have been processed.
+
+Syntax:
+
+for variable in sequence:
+    # Code to be executed for each item in the sequence
+REPETETIVE ACTION ON  BLOCK OF CODE----------------
+
+FOR LOOP-----used when u will  know definite number of times to execute the block of code.
+WHILE LOOP--used when u dont know (indefinite) how many times to execute.
+for variable in sequence :
+---
+---   block of code------of list, tupple
+colours = ["blue","yellow"]
+for x in colours:
+print x------------o/p is blue and yellow.
+
+WHILE LOOP---------------
+while loop is used when u dont know how many times should execute the block of code.It is used based on while condition.
+While loop is executed the code until given condition is true.
+
+FOR LOOP MANIPULATION-----
+CONTINUE-----------------it contunues by skipping the  given condition
+numbers = [1,2,3,4,5]
+for numbers in numbers:
+if number = 3:
+break
+print(number)----------------------------o/p is 1,2-===after break (i.e 3) it wont execute--------
+IN CASE OF continue for the code---------o/p is 1,2,4,5.
+
+
+WHILE LOOP---------
+count = 0
+while count < 5:
+print(count)
+count+1-------------------------o/p
+
+88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+                          KUBIYA
+
+ChatGPT Like DevOps Assistant | True Future of AI in DevOps #kubiya----https://www.youtube.com/watch?v=Rg_pbBlPmdY
+KUBIYA------------------------------https://docs.kubiya.ai/gen-2-docs/
+
+
+

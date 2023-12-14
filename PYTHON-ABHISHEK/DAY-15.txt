@@ -1,0 +1,6 @@
+Part-2 GitHub Jira Integration using Python Flask | Episode 15 - Python for DevOps | DevOps Projects-----https://www.youtube.com/watch?v=qCeb_DSD3y4
+GITHUB-----https://github.com/iam-veeramalla/python-for-devops---30 mins complete
+
+DECORATORS-----------
+          Are used tp allow the authentication users to access the function before the function executes.Are written before definition of the function. 38 mins.
+

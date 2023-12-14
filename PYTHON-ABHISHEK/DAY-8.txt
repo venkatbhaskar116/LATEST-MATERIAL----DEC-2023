@@ -1,0 +1,14 @@
+
+LIST IS MUTABLE and in square brackets[]
+Tuple is immutable(not changable or resized)) .used normal braces(brackets)-------ex ()
+s3_buckets_list.append(new bucket name)---to add or change the object in the list
+                remove                 ---to remove or change the object in the list
+
+IF U WANT TO SELECT ANY SPECIFIC ELEMENT FROM THE LIST USE indexes(because list is using indexing)
+suppose if u wwant select first element in the list
+print s3_buckets_lists[0]-----indexing starts from 0 for first element and so on.
+                      [1]---- select the second element
+                      [2]----selects the third element
+
+LENGTH OF THE LIST------print(len(s3_bucket_lists))
+INTERVIEW------------lists are heterogenious in nature.means that u can store any data type in the list (ex---1,2,3,bachi,tim)                   
