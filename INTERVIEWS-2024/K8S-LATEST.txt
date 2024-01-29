@@ -1,0 +1,52 @@
+                                  KUBERNETES-----https://www.youtube.com/watch?v=0d3Lyf_GEDk
+
+QQ----my pod is in  pending state in controlplane-------3h 30mins
+because of taint on master node-----
+kubectl describe node nodename |grep -i "taint"------------here u will find the taint details
+Taints:          node-role.kubernetes.io/control-plane
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+node/kube-vm untainted
+kubectl describe node nodename---------successfully created
+
+
+QQ----Previously created Nginx webserver deployed successfully,but the webpage is  not accessible findout why?
+Check the pod events by running the describe command.
+kubectl logs  pod_name
+Check web serrver configuration  by "kubectl exec" command
+kubectl exec nginx-webapp(podname) -- cat /etc/nginx/conf.d/default.conf(u can find the config file location in kubectl logs ngnix-wewbapp(podname)
+here u can find the listener listening on port 80 so u need to change port in svc file.
+kubectl get svc
+kubectl describe svc
+kubectl edit svc
+curl http://localhost:30538---------connected to the webpage
+
+QQ----Need to provision big data pods on Big Nodes only and no other application pods should be deployed on Big Data NODES how do achieve it?
+The above scenario can be achieved through a combination of multiple concepts,such as 
+NODE AFFINITY---
+       Node affinity is a property of pods  that attracts them to a set of nodes [either as a preference or a hard requirements]
+       Node affinity i conceptually similar to nodeselector,allowing ti constrain which nodes your pod can be scheduled on based on node labels.
+TAINT------
+TOLERATION---          [you can schedule the pods on required nodes using the node selector or node affinity or taint and tolerations.
+             you can  schedule the REQUIRED PODS on the REQUIRED  NODES using the taint and tolerations.
+
+QQ----SIDECAR CONTAINERS----
+      SIDECAR containers are used to extend and enhancing the main container.
+      SIDECAR ci=ontainers are used for networking proxies or as a part of logging system.
+--------------------------------------------------
+kubectl exec pod podname --cat index.html------------to enter the pod and get the index.html content
+                           curl http://lodalhost:8080-------------so u can enter into the pod and access that pod.
+kubectl exec pod podname --curl http://localhost:81(port of a container)------to connect to a container in a pod
+kubectl logs -f podname-------------logs for pod
+kubectl logs -f podname containername--------specific container logs
+
+QQ---different deployment strategies-------4h 45mins
+                               Rolling update deployment-----------
+it will be replaced pods one by one 
+replacing the instances with new version of application from old version
+
+                               Recreate Deployment
+We fully scaledown the existing application version and before we scaleup the new version.Here we need downtime. 
+
+DAEMONSET USE CASES-----------
+running a  logs collection daemon on every node  such as fluentd and logstash
+running a node monitoring daemon on every node   such as promethews node exporter,datadog agent and collectd.

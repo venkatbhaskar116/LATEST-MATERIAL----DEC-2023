@@ -1,0 +1,6 @@
+Corporate DevOps Security Tools | DevSecOps | Day-0 -----SECURITY TOOLS---https://www.youtube.com/watch?v=5CbQyB0dcCA
+kics-------------keep infrastructure as code secure(TERRAFORM)---used to findout misconfiguration,security compliance or vulnarabilities.
+DOCKLE-----------securing the images
+PROWLER----------cloud security---used to scan all cloud services and make a report to resolve efficiently
+TRIVY------------file system/docker image and more
+DEPENDENCYcheck--OWASP---to check for vulnarabilities in dependencies and librarys.

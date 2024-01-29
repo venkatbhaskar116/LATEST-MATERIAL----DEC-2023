@@ -1,0 +1,48 @@
+kubernetes controllers-----are caretakers of your application desired state with actual state.
+Kubernetes controllers helps maintain the desired state as you mention in configuration files(YAML FILE).
+They ensure that your containerized applications are always running,healthy,in the right numbers,even if nodes fail or need to be replaced.
+REPLICASET
+DEPLOYMENT
+STATEFULSET
+DAEMONSET
+
+kubernetes operators are way to extend the functionality of kubernetes---also called custom controllers.
+Operators are use the CRD(CUSTOM RESOURCE DEFINITION) TO define the new object types in k8s.CRD represent  your application or service where as Operators are
+acts on these custom resources.
+
+Example: Let's say you have a database application that requires specific backup procedures, scaling rules, and updates. You can create a Database Operator. 
+When you define a custom resource of type "Database" using your CRD, the Database Operator takes care of all the intricacies of running and managing that database.
+
+Automation Beyond the Basics: While standard Kubernetes controllers (like Deployments or StatefulSets) are great for common applications, Operators are designed
+ for those cases where your application requires more specialized care. They can do things like:
+
+Automatically handle backups and restores.
+Scale the application based on custom metrics.
+Update the application when new versions are available. 
+Handle complex day-to-day operations specific to the application.
+
+
+
+Kubernetes Admission Controllers are a crucial part of the Kubernetes control plane that intercept and control resource requests and modifications made to the cluster.
+They serve as a gatekeeper, enforcing policies and security measures before resources are persisted in the cluster.
+
+Kubernetes Admission Controllers are security and policy enforcement mechanisms in Kubernetes that validate and potentially modify resource requests before they are 
+allowed in the cluster. They help maintain cluster integrity, enforce policies, and enhance security by checking and, if needed, changing resource configurations. 
+There are two types: validating controllers (check and potentially reject) and mutating controllers (modify). They play a crucial role in enforcing cluster-wide policies and maintaining a well-behaved Kubernetes environment.
+-________________--------------------------------------------------------------------------------------------------------------------
+Setting up Ingress controller NGINX along with HAproxy for Microservice deployed inside Kubernetes cluster-----https://jhooq.com/ingress-controller-nginx/
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+HEADLESS SERVICE------------https://www.youtube.com/watch?v=AoaKMNV0SEU
+                Generally a service in k8s when client requests through the service it goes to any of the pod meaning that it does not connect to the specific pod
+and client does not know service is connected whwich pod
+WITH HEADLESS service client request goes to the service and service connects to the specific pod.
+When client send a request to headless service( in service yaml file ,under selector add cluster ip-none),the headless service get back to the client with list of pods
+with ip addresses so that client will decide the ipaddress of pod to connect.
+
+In simple headless service provides more control over communnication with the pods.Suits for stateful applications.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+volume types in k8s--ex--https://www.youtube.com/watch?v=AoaKMNV0SEU
+empty dir(empty directory)----used to share the data b/w init containers and application containers.use it as a mountpath.
+                   ITOCEAN K8S
+                   CLOUD THROTTLE ------------https://www.youtube.com/watch?v=uEPe9jcOLDA&list=PLhBhH3jB8hJz4bUk1AI9WeGTNtpjGjjx3------[1/44 interviews]
+kubernetes----https://www.learnitguide.net/2021/10/kubernetes-scenario-based-interview.html

@@ -1,0 +1,236 @@
+HIGH AVAILABILITY IN KUBERNETES---------https://k21academy.com/docker-kubernetes/high-availability-and-scalable-application-in-kubernetes/#:~:text=How%20does%20Kubernetes%20achieve%20high,of%20persistent%20volumes%20and%20StatefulSets.1.how can u 
+
+DAY-20 | LINUX For DevOps Engineers-----https://github.com/jaiswaladi246/30-Days-Of-DevOps/blob/main/DAY-z-20.md
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+kubernets interview qns and ans------https://www.learnitguide.net/2021/10/kubernetes-scenario-based-interview.html
+
+1.how can u specify the job schedule limitation in cronjob-------using ACTIVEDEADLINESECONDS:200 in deployment file(kind-cronjob,jobname-mycron job,activedeadlineseconds:200(it may be as u wish)
+[if job finishes in 40 secs in general,if it takes upto 5 mins--to stop this u can mention ACTIVEDEADLINESECONDS:200]
+
+2.how do u test the manifest file without actually executing it------[using DRY-RUN] kubectl create -f yamlfilename--dry-run
+
+3.how do u initiate rollback for an application --
+kubectl get deploy
+kubectl rollout history deploy nginx
+kubectl rollout undo deploy ngnix
+
+4.how do you package the kubernetes application-using HELM[helm is a package manager which allows users to package,configure and deploy the applications and the
+services to the cluster]--HELM CHARTS are nothing but bundle of templating manifest files----all the templating work is done by the TILLER---
+helm init------------create deployment in the cluster,this deployment install the tiller,server side of the helm
+helm search redis----to search for an specific application
+helm install redis--install the application
+helm ls-------------list the applications
+
+5.What are INIT containers------INIT containers are those executed before the actual(any other container) containers run in the pod.
+
+6.what is node affinity-------NODE AFFINITY ensures that pods are hosted on paticular nodes.
+          pod affinity-------POD AFFINITY ensures to pods to be allocates to a single node
+
+7.how do u drain the traffic from a pod during the maintanance-----
+KUBECTL DRAIN NODENAM---with this node is unscheduled for newer pods and existing pods are evicted if API server supports eviction else it delete the pods.
+KUBECTL UNDRAIN NODENAME--once maintainance is done(node is up and running) ,u want to add that node to rotation u can use this command.
+
+8.i have one pod and  inside 2 containers are running one is nginx and otherone is wordpress,how can u access the these 2 containers from browser with ipaddress
+kubectl port-forward nginx-pod-name 80:80
+kubectl port-forward [wordpress-pod-name] drupal-port:wordpress-port
+
+9.IF i have multiple containers running inside a pod,and i want to wait for a  specific container to start  before starting another one--------
+USING the init containers.....
+
+10.what is the impact of upgrading kubelet if we leave the pods on worker node-will it break running pods-why?
+when upgrading the KUBELET---kubelet is restarted -will cause all the pods on the node will stop and started  again.
+
+11.How service that selects app based on label and has an external ip?
+
+12.how should u connect app pod with database app----by defining the service and bringup all the pods with proper labels and the service will pick them up
+
+13.
+
+*************************************************************************************************************************************
+KUBERNETES OPERATORS------------https://www.youtube.com/watch?v=VAojjIYVhGk--------abhishek veeramalla
+kubernetes operators are similar to the helm ---it is also package,configure and managing the applications
+when using helm (bundle of all manifest files),if any update is made to deployment or service file etc the  helm cannot find it,but k8s operator can find it and 
+override it,it will happened by the operator who writes the opearator he will write a reconciliation logic in OPERATOR.Finally  k8s operator will override the 
+changes made to deployment or service  etc files with the help of reconciliation logic by who created operator.
+from operators,
+1.RECONCILIATION LOGIC  [consider also autohealig] is responsible for auto fixing the modifications that are made by the user.
+2.AUTOUPGRADES--
+OPERATORS CAN WRITE IN
+1.GO language-------recommended it will have all features
+2.ANSIBLE
+3.HELM
+main thing is u need to write reconciliation logic for operators or controllers.
+Operators are stored in operatorhub.io---only hosts approved operators.
+in kubernetes cluster ---install OLM(Opeartor Lifecycle Management)---this OLM verifies the downloaded operator from operatorhub.io and create operator related resources
+like depployment file-----------------
+--------GO TO THE OPERATOR FRAMEWORK website---------------check here---30min
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+KUBERNETES SECURITY--------------------------------SECURE KUBERNETES LIKE A PRO | HOW DEVSECOPS ENGINEERS SECURE--[https://www.youtube.com/watch?v=qFwBKLZnPlQ]--- 
+document-----------https://github.com/iam-veeramalla/Kubernetes-Zero-to-Hero/blob/main/Security/Manage_Security_Like_Pro.md
+1.secure API server----------go to the api server pod.yaml file and edit with TLS-cert-file(here give the private key and client(ca )file)--TRANSPORT LAYER SECURITY
+2.RBAC	-----restricting the user with RBAC
+3.Network policies----- 
+4.encrypted at rest (ETCD)----even though u specified the RBAC u should encrypt the ETCD.
+5.SECURE CONTAINER IMAGES
+6.Cluster monitoring
+7.upgrdes
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+Written by Manoj Kumar
+https://manoj777.medium.com/top-7-kubernetes-interview-questions-for-experienced-professionals-part-1-166336c1ec9e---contentlink
+-------------------------------https://medium.com/tag/kubernetes-cluster----------[main link]
+ROLLING UPDATE----default update strategy in k8s
+                  involves update the pods one-by-one,starting with a single pod,and proceeding to the next one only after the first one has successfully been updated.
+RECREATE----------All pods are deleted and recreated at once,here which results in a brief disruption in service availability.
+Blue-Green Deployment---It involves running two versions of the application in parallel, with one versionis being updated and other  remain unchanged.When the update 
+                        is complete,the traffic is routed to the newer version.
+CANARY-----------This involves gradually rollingout the updated application to a subset of users and gradually increase the precentage of  users who recieves the 
+                 overtime.It allows for testing and validation  of the updated application before it is rolledout to all users.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+https://manoj777.medium.com/top-7-kubernetes-interview-questions-for-experienced-professionals-part-1-166336c1ec9e
+
+Can you explain how you would configure resource limits and requests in a Kubernetes cluster to ensure that resources are used efficiently?
+Configuring resource limits and requests in a Kubernetes cluster is an important aspect of ensuring that resources are used efficiently.
+Resource limits and REQUESTS are used to controll the amount of CPU and memory and other resources that a pod can use.
+1.Define the resource limits and requests in pod yaml file
+The RESOURCE LIMITS define the maximum amount of resources that a pod can use
+The RESOURCE REQUEST define the minimum amount of resources that a pod requires to function correctly.
+2.modify pod.yaml with resource limits,cpu500m and memory 256m--requests cpu 100m and memory 128m.
+3.verify that using kubernetes dashboard,kubectl top(command) or any third party monitoring tool.
+4.Tune the resource limits and requests based on the resource utilization of the pods. If a pod is consistently hitting its resource limits, it may be necessary to 
+increase the limits, while if a pod is consistently underutilizing its resources, it may be possible to reduce the limits or requests.
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+https://manoj777.medium.com/top-7-kubernetes-interview-questions-for-experienced-professionals-part-1-166336c1ec9e
+
+Can you explain how you would use Kubernetes role-based access control (RBAC) to secure a cluster and its resources?
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+EXPLAIN THE KUBERNETES ARCHITECTURE-------
+--------------------------------------------------------------------------------------------
+STATIC PODS--------------
+created,recreated,and destroyed by kubelet on specific node
+static pods are created in control plane as mirror pods for visibility .
+are managed by the kubelet only
+kube-api server observes static pods,not managed
+USED when kubernetes control plane bootstraping---
+For Example--kubeadm creates the control plane components like kube-api server,scheduler and controller manager as static pods because it cannot create these as 
+normal pods  due to the fact the kube-api server is not available before cluster creation.
+-----------------------------------------------------------------------------------------------------------------
+CONFIGMAP------
+It is an API object used to store the non-credential data in key-value pairs.
+PODS can consume configmaps as environment variables,command-line arguments or as configuration files in a volume.
+---------------------------------------------------------------------------------------------------
+                                                TROUBLESHOOTING[https://komodor.com/learn/kubernetes-troubleshooting-the-complete-guide/
+
+1.CreateContainerConfigError-----usually the result of a missing Secret or ConfigMap---create new configmap
+2.ImagePullBackOff or ErrImagePull-----may be wrong image name or tag ---permission issue with registry
+3.CrashLoopBackOff---pod is not scheduled on a node due to lack sufficient resources  OR  may be pod did not succeed in mounting the requested volumes.
+4.Kubernetes Node Not Ready---when a node shutsdown or crashes all the pods of that are deleted and volumes are detached.
+     if a node status shows "not ready " for 5 mins then kubernetes will move all pods to another node. or user can restart the node problem resolved.
+
+_________________---------------------------------------------------------------------------------------------------------------------
+                                                   KUBERNETES OPERATORS
+
+In Kubernetes, operators use a reconcile loop to manage the state of a custom resource. The reconcile loop is a loop that runs continuously, and is responsible for 
+checking the current state of the custom resource and making any necessary changes to bring it into the desired state.
+
+Devops Project | Jenkins | Git | Maven | Docker | Kubernetes | CICD | deploy to k8s cluster #1--https://www.youtube.com/watch?v=YggRuCiE054[
+SURESH RAJU VETUKURI]
+
+Kubernetes Ingress Explained:------------https://www.youtube.com/watch?v=-2VKSYffdYM
+Suppose if u have a domain like http:/mycourses.com-----u need to deploy home page,courses etc..on cluster--------
+PATH BASED ROUTING----------
+http:/mycourses.com--------------service to home page (http:/mycourses.com/Home)----------------IN CLUSTER
+http:/mycourses.com/courses------service to courses page[http:/mycourses.com/courses]
+http:/mycourses.com/blogs--------services to blogs page[http:/mycourses.com/blogs]
+ex--if u have book(domain) it will have different pages like courses,blogs--------http:/mycourses.com/courses,http:/mycourses.com/bogs-------------
+
+HOST BASED ROUTING--
+http:exams.mycourses.com/---exams is a sub domain name----------service to exams
+http:/mycourses.com
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+What is an API Gateway?------------------https://www.youtube.com/watch?v=vHQqQBYJtLI
+API GATEWAY is an entrypoint for ypur API's.
+user----https-------secuity------------------API GATEWAY-----------forward----/home/products-----/my-cart/get----------my-cart/add
+                                                                                       WEB APPLICATION
+                    authentication----------
+                    autherization----------
+An API GAEWAY will ensure that if a ny user tries to access any application(web  ex)it will ensure that security(https),authentication and autherization,then it will
+forawward the request.
+IF incase of microservices along with above, it will route the traffic to different services.
+And also for multiple calls from user it will make single call and get the info back to the user with that single call
+-------------------------------------------------------------------------------------------------------------------------
+What is a service mesh?------------------https://www.youtube.com/watch?v=QiXK0B9FhO0&list=PLhfHPmPYPPRlV_1JSSEtkEIuXEJQBkf1X
+SERVICE MESH--from monolithic to microservices once converted,to communicate with those microservices,ip's are not static in cloud except static ip.
+For that every service has to be registered with SERVICE REGISTRY(like docker,git hub)with its ip address.So that if any service wants to talk with another,it will
+get that service ip from registry and communicate.because ip's are not dynamic in cloud,if any server down or restarted its ip is changed.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Kubernetes Custom Resource Definition (CRD) Explained with Demo----https://www.youtube.com/watch?v=u1X5Rf7fWwM
+RESOURCE-----
+A resource is an endpoint in kubernetes API,stores the a collection of API object.
+app/v1 is an API endpoint group
+DEPLOYMENT is an resource-api object.
+
+CUSTOM RESOURCE-----
+customized resources are extensions of kubernetes api----user defined resource(ourself)--
+resource which is not available bydefault
+custom resource is accessed by kubectl
+it has its own yaml file for creation.
+HOW IT WORKS-------------
+1)request----2)KUBE-AGGREGATOR------3)KUBE RESOURCES--------------4)api extensions-api server(serving CRDs)-------404(not found)
+define custom resource definition(CRD)	using yaml
+create custom resources using yaml
+ARE CRSs works like pods---------
+Once CRD is created ,create custome controller on resource handling create/update/delete events.
+build custom controller and deploy to work CRD as  aggreagated API for declarative resources using kubectl. 
+vi greetings.yaml9yaml file name for creating CRD)
+kubectl -f apply greetings.yaml-creating CRD
+kubectl api-resources
+kubectl api-resources |grep greetings
+curl localhost:8081 |grep -i api-----------CRD is regitered with api-server.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JIRA Workflow in Real Time for DevOps Projects | Agile & Scrum Explained |---------https://www.youtube.com/watch?v=pUAadFQjnvc
+
+JIRA is ticketing tool--If u consider a project (DEVOPS)  in that u will have payments,cloths,accounts etc sections.if u raise a ticket about any issue with payment
+section or other in DEVOPS project(jira---devops project ---create ticket)it will be in backlog(in jira)--then product owner and TEAM leader will discuss about
+these issues in backlog  REFINEMENT and create  a todo list based on prioritization,so that devops team will start to work onit-------
+approaches in agile methodologies are SCRUM,CONBON AND SCRUMBON.
+SCRUM is timeframe approach--so that it will have the sprints(in sprint we will have todo tasks)to complete the sprints(userstories) a timeframe(may be 2 or 3 weeks) 
+to complete the tasks[usually it is 3 weeks].we will pick user stories and start to work and complete within timeframe.
+TOTALLY WHAT IS ----U PICK SOME STORIES(FROM BACKLOG) THAN U CAN WORK ON THEM AND COMPLETE WITHIN TIMEFRAME.
+u can pick any of the userstory(like task) from a sprint,so that it will show u that underproject name [DEVOPS sprint 1, under this u will find 28th AUG TO 11TH SEP]
+ that showing timefram 28 aug to 11 sep(ex). 
+IN THE LEFT PANEL-click on ACTIVE SPRINTS---here u will find which userstories are assigned to whom and statuses [like todo or in progress or done] of them
+all above are discuss in DAILY STANDUP meeting--
+1.what u have done yesterday
+2.what are u going to do today
+3.any blockers------------u will discuss all these in DAILY STANDUP MEETING.if any blockers with userstory let u tell them.
+
+every team (like payments or accounts) have a SCRUM MASTER and he will facilitate this meeting.IF u are matured with thiis meetings no need of scrum master presance
+any team member can facilitate this meeting.in mid sprint review we will(may be scrum master or team member)make a report on userstory(assignee) and let them know
+that the person or userstory going in wright direction no issues
+
+If any new team member joins,how he will know for which userstory
+experienced persons are estimating the userstory and pick it
+a new person cannot the estimate userstory,so that we can not assign a critical userstory to newcomer,giveing him straight forward small userstories
+ STORY POINTS IN SPRINT shows the complexicity of userstory like 3 points or 5 points.
+In agile methodology u will have no's like 1,2,3,5,8 and 13 etc... 
+1 it is simple task-like cicdpipeline issue ---------story point is 1
+  if it is 3 it is normal
+           8 critical
+          13 super complex---------------so this is story points are.
+-----------------------------------------u can store all these usertories with documentation in CONFLUENCE-----------
+
+
+
+
+
+
+
+
+
+
+

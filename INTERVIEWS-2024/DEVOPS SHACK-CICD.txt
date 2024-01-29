@@ -1,0 +1,32 @@
+                                                                   DEVOPS SHACK
+
+The Ultimate CICD Corporate DevOps Pipeline Project------https://www.youtube.com/watch?v=yH9RoOFEKMY-----[https://github.com/jaiswaladi246/Ekart]
+35 mins complete
+
+Real Time CI CD DevOps Project | End To End CI/CD Pipeline Project----https://www.youtube.com/watch?v=Hen2biH2BSI&list=PLAdTNzDIZj_-YSCCVcNB0ucfZPHKUAxNH&index=3
+requirement to change the background colour--------------
+ticket raised and assigned
+developer write the code and tested locally
+
+1.Developer write the code and push to GIT repo.    [codecheckout]
+2.checkout the code to the jenkins(as a CICD pipeline) through webhooks and create a local copy in jenkins/workspace[code compile]
+3.Next codecompile,here checks for any syntax errors in code.      [MAVEN]
+4.Next unit test cases --here unit tests are taken place for code. [MAVEN]
+5.Next code quality check using the SONARQUBE,checks for percantage of the code is passed like 80% and above.
+   [checks for any code vulnarabilities,code smells,code duplication and bugs]SONARQUBE IS A SECURITY TOOL]
+6.OWAWSP DEPENCDENCY CHECK[optional]--it checks and categarized the issues as priority.
+7.CODE BUILD---here building the application using the code and generate a artifact[artifact will be in jar or war file format]
+8.Using DOCKER,build the image and push to the docker repo or ECR.
+9.Scan the image using the TRIVY----------------docker scan image(image name)
+10.This image will be deployed to docker container or tomcat server(webbased server)
+
+trivy scans the images only
+OWASP checks dependencies and also file systems.
+
+IMPLEMENTATION----
+Install jenkins master server----t2 medium,install open jdk----slave server------ubuntu
+plugins-----
+jdk---[ECLIPSE TEMURIN INSTALLER]
+
+install sonarqube server---t2 medium--ubuntu
+install nexus repo---------t2 medium--ubuntu

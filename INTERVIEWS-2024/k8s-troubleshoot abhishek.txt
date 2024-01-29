@@ -1,0 +1,60 @@
+
+Real time issue on Kubernetes------------https://www.youtube.com/watch?v=EJISJdbUax8&list=PLLxffwjCPn9wjYekB3n44dE3YwsvaTNIA----IT Ocean
+
+
+
+-------------KUBERNETES DEBUGGING AND TROUBLESHOOTING-------------------------------https://www.youtube.com/watch?v=ORSxQeboprc
+             SEARCH IN GOOGLE---Kubernetes API Ref Docs
+1.Imagepullbackoff
+2.ErrImagepull
+3.Registry unavailable
+4.Invalidimagename
+5.Crashloopbackofferror
+6.KillContainer error
+
+Kind-----kubernetes in docker
+
+kind create cluster --name=k8s-troubleshooting
+                            [pods can be created using with deployment,statefulset or daemonset]
+FOR COMMANDS----------KUBERNETES COMMANDS CHEATSHEET in google(control+f-----for searching)
+
+----------IMAGEPULLBACKOFF--------
+1.May be invalid imagename,tag or permissions----------(u dont have permissions to the image)
+2.May be u put the image in private repo/any private container registry
+kubectl create deploy nginx --image=nginx(if u provide wrong image nam---u will get imagepullbackoff error--like ex image=nginxdoesnotexists)) 
+kubectl get pods -w
+DEBUGGING------
+KUBECTL describe pod podname(here check in events section)
+
+
+---------IMAGE IS PULLED BUT POD IS NOT RUNNING(PENDING)---15mins
+1.resource quota on namespace
+2.Node or nodes lacks resources
+3.check the kube-scheduler component
+
+resource quota is resource capacity increasing in deployment.(if cluster or clusters are used by multiple teams,u need to check for resources)
+kubectl create ns payments
+create a resourcequota yamlfile and assign it to ns payments(vi resourcequota.yaml) for this checks in kubernetes docs
+kubectl apply -f resourcequota.yaml -n payments	
+kubectl create deploy nginx --image=nginx -n payments
+kubectl get pods -n payments(no pod is in ready status)
+kubectl describe deploy nginx-here u can find in conditions section---replicafailure= failedtocreate)
+kubectl get events --sort-by=.metadata.creationTimestamp-----get this commad from commandcheatsheet
+
+---------CRASHLOOPBACKOFF-----------22mins
+liveness probe failure==========liveness probe is application is running(in live)
+
+during the runtime pod gets this error.
+kubectl get pods
+
+
+---------IMAGE PULLED BUT IMAGE IS NOT READY
+always checks for readyness probe----readyness probe is ur application is ready to accept the traffic.
+
+ADMIISSION CONTROLLER--
+
+
+
+
+
+

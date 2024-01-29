@@ -1,0 +1,32 @@
+pavan elthepu-----------Autoscaling in Kubernetes--------https://www.youtube.com/watch?v=jyBDbm1FHiM
+
+HORIZONTAL AUTOSCALING----------increases number of pods(replicas) as load or requests are increased.Increasing the number of pods is also called SCALEUP[scalingup]
+BACKGROUND-----------------FOR CLUSTE U WILL HAVE master node and worker node.In workernode u will have a kubelet,in kubelet u will have an agent "cAdvisor"[container
+advisor]--which collect the metrics like cpu and memory for every 10 seconds.For every minute the metric server in masternode will aggregate and expose those metrics
+with k8s API server.
+HPA(horizontal pod autoscaler)querries the API serrver  for eery 15 seconds for these metrics,once HPAcontroller gets these desired metrics it checks these metrics
+against our definition and then decides to scaleup or scaledown our replicas.
+HPAcontroller  just updates the replca count in the traget deployment,spinnigup a new pod or deleting the existing pod will be taken care by the replication controller.
+And cAdvisor statrts collecting the new pod metrics aswell.
+in deployment.yaml file min replicas(1) and max replicas(5)for example,morethan average utilization 70% scaleup.lessthan 50% scaledown as per.
+service.yaml 
+hpa.yaml
+
+
+VERTICAL SCALING----------------INCREASES the resources like cpu,memory instead of pods increasing.
+CLUSTER AUTOSCALING-------------As needed add the no of nodes to the cluster to automatically accomodate more no of pods,cluster autoscaler will do that.
+                                It adds the nodes to the cluster if there are any pods struck in pending state because of lack of resources in the cluster,
+
+YOU CAN ALSO DECREASING THE BY SCALEDOWN ----decreasing the no od pods(HA),decrese the resources like cpu and memory(VA)) and finally minimise the no of nodes in cluster
+                                             depends of load requirements.
+
+IN cluster autoscaler---insuuficient resources
+if pod requests for 1 cpu,if cluster does not containe that(like it has .5 cpu)the scheduler marks that pod as unscheduled.
+1.freeup the resources in cluster by deleting the unwanted workloads
+2.manually adding the new nodes
+3.let k8s dealing with adding nodes automatically whenver there is a need
+IN CLUSTER AUTOSCALER---CA looks for any unscheduled pods,then CA will create new node and scheduler will schedule that pod(CA doesnot look for cpu,memory)
+INCASE OF aws---CA will provision new EC2 instance
+          azure--virtual machine
+          GCP----compute engine
+------------------------------------------------------------------------------------------------------------------------------------------------------------------

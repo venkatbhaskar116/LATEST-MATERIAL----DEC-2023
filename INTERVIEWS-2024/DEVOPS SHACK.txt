@@ -1,0 +1,223 @@
+                                      DEVOPS SHACK---------------------------https://github.com/jaiswaladi246/30-Days-Of-DevOps/blob/main/DAY-4.md--gitrepo URL
+                 DAILY TASKS  
+CI/CD PIPELINE IMPLEMENTATION-------
+1.Creating new pipeline from scratch for new project.
+2.Modifying the existing pipeline by adding some stages depending on the requirements.
+3.For many pipelines,running in specific intervals of time,get the alerts if pipeline success or fails in crontab.
+  if fails we should fix based on availabel logs.
+
+TROUBLESHOOTING---------------
+1.working on jira tickets which will have problem description,Once the ticket is assigned to me by myself and start to 
+  work on that once completed update the ticket status.
+2.Also when developer commit the code into GITHUB,they will (by raising the ticket in jira)notify us about to deploy the changes in qa environment.
+3. Also when i got a ticket(jenkins tool is not working),and i need to check for that.If application is deployed into kubernetes (into the pods),
+   then we need to check the related (jenkins)pod logs and and try to open line by line and fix it(may be some plugin deprecated)by removing it.. 
+   [my task is to fix if any deployment tool (like jenkins) is not  working from client end,i need to fix it.(it should be done in backend)
+4.DEPLOYMENTS TO ENVIRONMENTS-----
+   generally this will happens almost daily if even small changes made to repository---so that u need to deploy those changes to dev then qa (and also ppd)--
+If everything ok then we should get approvals and fix the timeslot for deploying the changes to production(this will happened one in a fortnight(15days) or once in a month.
+
+CLOUD DEVOPS PIPELINES-----------------existing projects (applications) migrating to cloud environment.
+POD MANAGEMENT------------------------type of deploying the application of jenkins and sonarqube----i shared the link to user(client) and they can access..
+                                      But here sonarqube is not accessible due to some issue so that they will raise a ticket  and it came to me and i need to start
+                                      working on it.I will check k8s backend open sonarqube pod and seen the logs and found that ---one of the most issue with
+                                      sonarqube is that when u r upgrade the sonarqube version.
+                                      Usually there are multiple versions of the same plugin,if suppose two versions of same plugin sonarqube could not decide 
+                                      which plugin should use,because of that sonarqube kept crashing.
+                                      In that case i used to remove the lowe version of that plugin from the sonarqube and restart the sonarqube.it is fixed.
+                           
+                                      When u are trying to deployment through yaml file (in yaml using the docker image) it fails.i found imagepullbackoff errror.
+                                      because of docker login is failed(meaning that u are not able fetch the image from the dockerhub) so that u need to check for
+                                      docker login credentials are present or not.then i will pull the image from docker hub with right credentials.
+DSTUM FOR UPDATES---[DSTUM --daily standup meeting)--it will happen daily for 15 to 30 mins .A member from all teams should attend and updates the status.
+
+IAC TOOLS FOR PROVISIONING------------
+                                     if client wants to have 3 instances with pre install of jenkins,maven,nexus and sonarqube.So that i used to get the
+                                     instances info and run ansible playbook to install the required tools.
+
+DOCUMENTATION----------------------By using confluence or sharepoint.(if possible document everything,if not document some important)
+
+
+**************************************************************************************************************************************
+DevOps Interview Questions | Part-1 ----https://www.youtube.com/watch?v=Gle4DfDTQts
+steps of pipeline--------
+code checkout=-----------------gitrepo 
+code compile-------------------maven
+run test cases-----------------maven
+code quality check-------------sonarqube
+security scan------------------Owasp Dependency check  [optional] 
+code build---------------------maven
+docker build and push image---docker
+docker image scan-------------trivy
+deploy to kubernetes---------
+
+DIFFERENCE BETWEEN MVN package---install ----deploy
+
+PACKAGE------Build and generate artifact and keep it in target folder in local workspace.
+INSTALL------Package and push artifact to local .M2 repository.
+DEPLOY-------Package,install,push the artifact to the thirdparty app like nexus.
+
+HOW TO GO TO INSIDE A CONTAINER-------USING THE EXEC command----docker exec --it container-name sh
+HOW TO RUN A DOCKE IMAGE----------DOCKER run -d --name<containername> -p container_port:host_port image_name:tag
+DOCKER FILE-------
+  from 
+expose 8080
+add target/devops-integration.jar devops-integration.jar
+entrypoint ["java","-jar","devops-integration.jar]
+
+GIT PULL----------Downloads the latest changes from remote repo(gitrepo) and merges those changes with local repo in current branch.
+GIT FETCH---------meaning that it download the latest changes from remote repo but it didn't merge with local repo.
+GIT MERGE-------- merging a branch with other branch.preservers the entire history of your repository.
+GIT REBASE--------Creates a linear history by moving your feature branch onto the tip of main	
+
+HOW MANY ENVIRONMENTS IN PROJECT------
+dev-
+qa-quality assurance
+ppd-(pre prod)
+prod-
+DR (disaster recovery)
+
+REMOVE DOCKER IMAGES,CONTAINERS AND VOLUMES-------------
+docker system prune -a-----------will remove all the containers,images and volumes
+docker rmi image---------------will remove the specific image
+docker rm containername/id--------remove container
+
+TROUBLESHOOTING----------------
+to install new jar in sonarqube tool
+jenkins pipeline failures--error 128----insufficient resoirces like ram,memory---401(unauthorized issue)
+connection issue while deployment---while deploying to k8s ---connection refused from jenkins to k8s containers---need to resolve---
+************************************************************************************************************************************************
+Jenkins Interview Questions 2023----https://www.youtube.com/watch?v=Ww-Hh_WdzWw
+
+USEFUL PLUGINS IN JENKINS-------
+
+MAVEN-----------------build tool
+SONARSCANNER----------code quality check
+GIT-------------------suppose using to connect to the gitrepo
+NEXUS-----------------building and pushing the artifacts to the nexus server	
+KUBERNETES------------deploy the app to the kubernetes
+SSH CREDENTIALS-------like using and storing the ssh credentials
+
+DEFAULT ENVIRONMENT VARIABLES IN JENKINS----------
+1.$JOB_NAME
+2.$NODE_NAME
+3.$BUILD_ID
+4.$BUILD_URL
+5.$WORKSPACE
+6.$JENKINS_URL
+
+MAVEN BUILD PHASES---
+validate
+compile
+test
+package
+verify
+install
+deploy
+
+HOW CAN YOU TEST AND DEBUG THE JENKINS PIPELINE-------
+DRY RUN----------------Using the  "DRY RUN" feature---------to validate the syntax,structure of the jenkins file, without actually executing the pipeline.
+Pipeline stages--------Breakdown the pipeline into smaller or multiple stages
+                       test each stage independantly,to isolate and identify problems
+                          
+LOGS-------------------Review the logs and  and output of the  pipeline,to identify the errors.
+
+VALIDATING JENKINS FILE LOCALLY--------https://www.youtube.com/watch?v=LkSHWYpiMtM
+                       open  jenkins page,open visual studio code---go for extensions---search for jenkins---jenkins pipeline linter connector---give jenkins details
+                       in vsc,create and write jenkins file----view-command palett--validate jenkins file
+HOW CAN U SECURE THE SENSITIVE DATA IN JENKINS PIPELINE------------
+                       USE the CREDENTIAL PLUGIN
+                       USE THE ENVIRONMENT VARIABLES
+                       USE ENCRYPTED FILES,DECRYPT THE FILES AFTER EXECUTION OF PIPELINE.
+
+HOW CAN U MANAGE THE ARTIFACTS IN JENKINS----USING ARCHIVE THE ARTIFACTS POST BUILD ACTION
+                                                   COPY ARTIFACTS PLUGIN
+how can u extend the functionality of jenkins-----using the plugins
+how to check the health status of slave node----manage jenkins--manage nodes--select the slave node--status---shows online or offline.
+***********************************************
+DevOps Interview For Experience : First Round Selected----https://www.youtube.com/watch?v=aAxtUJrpMWQ
+*****************************************************************************************************************************************************************
+SONARQUBE-------------https://www.youtube.com/watch?v=r2UVTDpIUj8&list=PLAdTNzDIZj_9Qo4LY2kRq2tAyuTAwmDbB
+code coverage--------------cover the code(tested more than 80%)
+code quality checks-------
+                           code vulnarability-------preventing from the attacks.
+                                bugs
+                                code smell
+to install ---server,install docker---docker run -d --name sonar -p9000:9000 sonarqube:its-community--open in browser ipaddress:9000s(sonarqube page  opened)
+login-------click on quality profiles---follow the video
+jenkins-manage jennkins---manage plugins---sonarqube scanner,jdk(eclipse temurin installer plugin)---global tool configuration--add jdk(detail--install automatically
+(add installer-install from aadoptium.net)--jdk 11
+add sonarqube scanners'
+add maven
+***************************************************************************************************************************************************************
+MAVEN---------------https://www.youtube.com/watch?v=-KqyFvEJYz0    ---to create project    use this link(https://start.spring.io)
+maven notes-(github repo url)--------https://github.com/jaiswaladi246/30-Days-Of-DevOps/blob/main/DAY-2.md---[FOR MAVEN COMMANDS]
+lifecycles----------1.clean lifecycle  2.default lifecycle  3.site lifecycle----------practice video   from 18th min
+
+clean lifecycle---------------deletes any build output generated by previous builds.
+default lifecycle-------------
+validate-------------------------------validates the project structure and verify if all necessary info is available
+compile--------------------------------compiles the project source code
+test-----------------------------------runs unit tests against compiled source code
+package--------------------------------packages the compiled code into a distributable format(jar,.war))
+install--------------------------------install the package into the local repository for use as a dependancy in other projects
+deploy---------------------------------deploys the package to  a remote repository for sharing with other developers or environments--push to nexus
+                         local repository for maven  .M2  [where artifacts are installed]
+
+*********************************************************************************************************************************************************
+Zero To Hero | Monitoring With Grafana | Day-21----------https://www.youtube.com/watch?v=zoGWMg7sB5E
+
+REALTIME CICD PIPElINE----------https://www.youtube.com/watch?v=Hen2biH2BSI--------------------------------------------------------------
+
+
+****************************************************************************************************************************
+Top-30: DevOps Scenario-based Interview Question with Practical Solutions-----https://www.youtube.com/watch?v=FL7WxdLb4zE--AZURE       [Devops Mela]
+pullrequest------------pulling all changes
+cherrypick-------------picking single required commit
+
+git squash----(compressing)--reducing
+              grouping of multiple commits into a single commit(where to avoid the messing of history)--to pick multiple commits as a single commit.
+netstat -p |grep portnumber -------to find which service is running(using) on which port
+jenkins build failures causes---
+1.pom.xml file
+2.plugins(missing or deprecated))
+3.dependencies
+4.any version mismatch
+how to backup the jenkins-----------
+using the backup plugin---after installing the backup plugin-click on setup---backup hudson configuration(ans also restore hudson configuration to restore jenkins
+from that backup)
+
+move the jenkins jobs from source to destination(another jenkins server)--------https://www.youtube.com/watch?v=mAG9VAOce7k
+source                                                       destination (download and install JOB IMPORT plugin on target server)
+                                                             manage jenkins-configure-job import plugin(add remote jenkins)--paste URL of source-add credentials of source
+                                                             apply and save---
+                                                             in manage jenkins page click on job import plugin---click on search into folders--click on query--here
+                                                             jenkins job folder of source(var/lib/jenkins/jobsfoldername) give in remote folder--
+                                                             here(target server) u wiil find all the jobs of source which are shown ---select all the jobs needs to be
+                                                             imported and also install required plugins---click on import(that's it)
+
+What are Environment Variables in Jenkins?
+Environment variables are global key-value pairs Jenkins can access and inject into a project. Use Jenkins environment variables to avoid having to code the 
+same values for each project.
+Other benefits of using Jenkins environment variables include improved security. Jenkins can use security credentials as variables, keeping sensitive or 
+user-generated data out of the project code....	
+
+
+
+
+                                                             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+***********************************************************************************************************************************************

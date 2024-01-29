@@ -1,0 +1,94 @@
+Devops Engineer role 4+ yrs exp faced interview questions ------https://www.youtube.com/watch?v=sl1Ejd6_Ndo------------done.
+
+diff b/w virtualization and containerazation---------
+
+Q.how to reduce the runtime of jenkins declarative pipeline----
+using parallelism and metrics combinations.[add stages----stage--("paralle stage")---below parallel----'stage task 1'
+using UPSTREAM AND DOWNSTREAM JOBS---means once a job completes it triggers automatically the next job.
+u can use the shared library to get the code and use in multiple pipelines by the reusability.
+ckeck in CHATGPT------
+
+Q.benefits of SHARED LIBRARY----
+1.Reusabililty-----Shared libraries allow you to write code once and use across multiple jenkins pipelines reducing duplication and ensuring
+  consistancy.
+2.MAINTANABILITY---Centralizing your common scripts and resources in shared library makes it easier to manage and update them as needed.
+
+Q.explain the declarative pipeline and scripted pipeline-------------
+DECLARATIVE PIPELINE------                         
+pipeline {                                         
+agent any {                      
+stages
+   stage ('Build')
+      steps
+In declarative, u can not run the pipeline if anystage fails in between-u should fix that stage and then pipeline executes .quick problem fixing possible.
+U can restart any specific stage in declarative.
+pipeline sysntax
+In Scripted it will continue execution of pipeline until all stages,even a stage fails it continues to execute pipeline.u can not use specific stage
+to restart or bug fix in scripted.
+node syntax
+
+SCRIPTED PIPELINE------
+node {
+    stage ('Build') {
+
+}
+   stage ('Test') {
+
+}
+   stage ('Deploy') {
+
+}
+
+
+Q.how to identify the public or private subnet in aws-------
+A public subnet is a subnet that is associated with a route table that has a route to an Internet gateway. This connects the VPC to the Internet 
+and to other AWS services. 
+A private subnet is a subnet that is associated with a route table that doesn't have a route to an internet gateway.
+
+Q.W.R.T to terraform statefile?what if statefile missing?--12th min
+Terraform statefile contains the resources to be create,it stores in in local backend(tf.state file) and also stored in remote backend(s3 etc).
+we can get the tf statefile from remote backend incase of missing.	
+
+Q.explain DOCKERFILE?
+
+Q.DOCKER SWARM?
+
+Q.Why pod is restarting alwways?
+u can use the policy, restart=never to stop restarting in pod definition file.
+                      restart=always restart always
+
+Q.how  to create persistant volume in k8s?
+in volume yaml file
+
+Q.how to limit the access to a namespace?
+using RBAC---
+ROLE AND ROLE BINDING  bound to a namespace
+CLUSTER ROLE AND CLUSTER ROLE BINDING ARE AT CLUSTER LEVEL.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+https://www.youtube.com/watch?v=R-gLrSgx4TA-----------
+Q.Container crashloopbackoff error------
+generally a container in a pod starts,crashes and restart repeatedly
+by default pod restart policy is always.
+kubectl get pods ---will give the output as image,status and restarts.
+common causes-------
+insufficient resources--
+lockedfile---------a file is already locked by another container
+locked database---a db is used and locked by other pods.
+missing dependencies
+kubectl describe pod podname
+kubectl logs -f podname -n namespacename
+kubectl logs -f podname -c container name
+kubectl get events
+kubectl describe deployment deployment name
+check for resource limits in manifestfile
+
+
+
+
+
+
+
+
+
+

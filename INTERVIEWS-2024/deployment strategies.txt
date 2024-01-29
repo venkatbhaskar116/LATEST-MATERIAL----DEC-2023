@@ -1,0 +1,65 @@
+                                     kubernetes deployment strategies------https://www.youtube.com/watch?v=aU-EtdEOdlM&list=PLdpzxOOAlwvJdsW6A0jCz_3VaANuFMLpc&index=18
+
+Helm in k8s - Zero to Hero-------------https://www.youtube.com/watch?v=lctjlwSxol4&list=PLdpzxOOAlwvJdsW6A0jCz_3VaANuFMLpc&index=19
+
+Troubleshooting & Debugging Kubernetes common problems----https://www.youtube.com/watch?v=ORSxQeboprc&list=PLdpzxOOAlwvJdsW6A0jCz_3VaANuFMLpc&index=20
+
+Kubernetes Toughest Interview Scenarios & Questions---------------https://www.youtube.com/watch?v=Axplgxm4K3U&list=PLdpzxOOAlwvJdsW6A0jCz_3VaANuFMLpc&index=24
+how to handle the k8s security-----
+pod communication(	setup network policices to limit the communication to the pods)
+RBAC
+create a namespace for multitenancy
+enable audit logging
+
+How two containers running in a single pod have single ip address-------------
+k8s  provide a special container(pause container) which holds the network namespace(interface) for the pod.
+k8s will create a pause container when pod is created in node,it acquires that pod ip address and setup network namespace for all the containers
+that are join the pod.
+
+Servise Mesh------
+
+initcontainer -------------
+these are the containers which are run and complete a specific task [for using mounting a specific volume] before startup of actual container(main).
+
+POD DISRUPTION BUDGET(PDB)--------SPECIFIES the no of replicas that the application can tolerate having,relative to how many it is intended to have.
+ex  in a deployment file specify replica 5 but the PDB is allowed to 4 only then the k8s talks to Eviction API will allow voluntary disruption of one pod at a time.
+PDB's apply only to  voluntary pod disruption /evictions,where the users and administrators are temporarly evict the pods for specific cluster actions.
+
+SIDECAR CONTAINERS-----whenever you want to extend the functionality of existing single  container pod without touching the existing one....
+
+POD SECURITY POLICY-----
+
+KUBERNETES OPERATORS-----------------https://www.youtube.com/watch?v=VAojjIYVhGk&list=PLdpzxOOAlwvJdsW6A0jCz_3VaANuFMLpc&index=25
+
+kubernetes  controller-----maintains the desired state of actual state of a k8s resource--------ex resplicaset controller[at any  given time replicaset maintains the 
+                          desired state(number) of the pods mentioned in the deployment file.
+custom k8s controllers are used to extend the capabilities of k8s cluster.
+OPERATORS are used to bundle,package and manage the related resources(ex istio---istio cinfig maps,istio deployment,istio secrets)
+Through operators u can do auto upgrades and auto healing.
+prometheus operator
+istio 
+elasticsearch
+argo cd operator
+minio operator
+keything for k8s operator is reconciliation
+reconciliation is the logic is to create the resources
+autohealing the resources(whenever goes wrong)
+delete the resources
+k8s operatorss are written in GO language
+k8s Operators are stored in operatorhub.io(only approved operators)
+once u downlaod operator from operatorhub.io ,in k8s cluster u need download and install OLM(operator lifecycle manager)
+OLM is verifying the operator then it is approved if everything ok.[u can install the operator even without OLM) but preferred
+OLM now create operator related resources
+HANDS-ON------------27thmin-----go to the operator framework in google(https://operatorframework.io)
+u need to choose the controller before creating the operator.
+kyverno does not have operator
+kubeshark also no k8s operator.
+****************************************************************
+k8s OPERATORS ARE USED TO EXTEND THE KUBERNETES WITH CUSTOM RESOURCES...
+Build Operators using  OPERATOR SDK------
+Operator SDK can take helm charts(if u have already) and convert into OPERATORS...
+If u have ansible playbooks,the OPERATOR SDK convert them into an OPERATOR..
+
+
+
+

@@ -1,0 +1,141 @@
+Project 4 - GitOps and ArgoCD Complete Hands-on Project - 10WeeksofCloudOps----https://www.youtube.com/watch?v=LgBnbmfsIdA
+
+Git Workflow with Production, Staging, Hotfix and Main Branch------------https://www.youtube.com/watch?v=zr7MpE_Eb6A
+Jenkins vs GithubActions-----------https://www.youtube.com/watch?v=vfLHldUXLlI
+
+Real Time DevOps Project | Deploy to Kubernetes Using Jenkins | End to End DevOps Project--https://www.youtube.com/watch?v=e42hIYkvxoQ
+----------------------------------------------------------------------------------------------
+              DEVOPS SHACK               JENKINS
+
+https://www.youtube.com/watch?v=DIl2VcqZVdY---------                      115af4d9cf6b3bc19a57843dd69ff71a48-----jenkins api token
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DevOps Projects 1|DevOps Kubernetes |Real-Time Project| Practical knowledge |Hindi| By Sanjay Dahiya---https://www.youtube.com/watch?v=YsVJd0FPoYQ[20-09-24]
+
+WORKED------install the serrvers for dev,jenkins,ansible and web servers------ssh connection between jenkins,anisble and web server using ssh-keygen
+passwd root(create passwd for root user in ansible,jenkins and web server and change in /etc/ssh/sshd_config in ansible and webserver[permitrootlogin yes    and
+passwordauthentication yes]------systemctl status(and restart)sshd
+ANSIBLE SERVER---mkdir sourcecode   ---cd sourcecode-----vi playbook.yaml [
+- hosts: all
+  tasks:
+     - copy:
+          src: /opt/index.html
+          dest: /var/www/html
+:wq
+integrate github with jenkins-----
+GITHUB----create new repository(demo-project)----create new file(index.html----welocome to india)
+copy the jenkins url(ipaddress:8080)
+GITHUB----settings---payload URL (jenkins url/github-webhook/)----content type(application json)------------secrets(goto the jenkins dashboard-----click 0n admin(rightside)
+click on configure--api token ---add token---generate token --copy token----apply and save--------go to github page in SECRET paste the token)---add webhook
+
+INSTALL THE PLUGINS----------------------manage jenkins-------plugins---
+1.publish over SSH---------install	
+jenkins--new item demo-project   freestyle--ok	
+source code management----git--copy github url by cloning----if u get error install git on jenkins server)----
+build triggers---check with github webhook trigger for gitscm polling------BUILD(add buildstep)sendfiles or execte commands over ssh---here chk video and continue
+manage jenkins and configure system---scroll down for ssh servers--add --give jenkins server details like name(jenkins)-hostname(ip address0-username(root)
+click on advanced--click use password authentication-click on test connection--- (if u get error give password for root user in jenkisn and sshd_configuration like
+permitrootlogin and passwordauthentication (yes)----test connection    apply and save
+demo-project-configure-----scroll down ---BUILD(send files or execute commands over ssh)---give all details-----------------
+***************************************************************************************************************************************************************
+How to Deploy a website using Git, Jenkins and Kubernetes | DevOps tools | Great Learning---https://www.youtube.com/watch?v=GKR7bo2-8PQ
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Devops Project | Jenkins | Git | Maven | Docker | Kubernetes | CICD | deploy to k8s cluster #1---https://www.youtube.com/watch?v=YggRuCiE054---14 mins complete
+STARTED-------25-09-23-----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Aws DevOps Real Time Project - 1 | Using GitHub Jenkins Docker Kubernetes Grafana--https://www.youtube.com/watch?v=q_2sf-SF7qQ
+
+HEMANTH FOR YOU
+841 subscribers
+--------------------------------------------------------------*******************************************************************************************************
+Jenkins CI/CD Pipeline - SonarQube, Docker, Github Webhooks on AWS | Resume Project | English-----------https://www.youtube.com/watch?v=361bfIvXMBI---23-09-23
+
+freecss -----------free websites location for practice----------25/09/23
+3 servers-
+jenkins------t2 medium
+sonarqube--- t2 medium
+docker-------t2 medium
+Install jenkins-
+sudo apt-get update 
+sudo apt install openjdk-11-jre
+https://www.jenkins.io/doc/book/installing/linux/#debianubuntu----jenkins download and installation
+systemctl status jenkins------------
+
+in jenkins----new item---freestyle---ok----source code management(git)----in build triggers(github hook trigger for gitscm polling)----apply
+goto GITHUB---settings --webhooks---add webhook---paylodaurl[(jenkins url- ipaddress with port(8080)-jenkins public ip+8080/github-webhook]---
+content type application json--secret[secret---paste the token(for this go to jenkisn username-configure-api token --add new token(copy this)[here no need of secret]
+letme select individual events------select pull requests and pushes--click on add webhook---
+jenkins-buildnow --status success
+github---go to the repository---newfile--this is test--commit newfile---check in jennkins for pipeline--------chk video(14-17mins)
+
+in SONARQUBE------
+sudo apt-get update -y
+sudo apt install openjdk-17-jre
+go to the sonarqube page---community edition---right click on download for free  to copy link and paste in sonarqube server with wget command[ex--wget PASTE URL]
+unzip downloaded sonarqube zip file  [unzip ---]
+cd sonarqube folder-------(which is unzipped)  cd /bin----ls-----cd linux 86x64-----./sonar.sh--------./sonar.sh console----[add the 9000 port in sonarqube instance
+edi inbound rules]--------check in webpage(sonarqube public ip with 9000 port]---login to sonar webpage with admin and admin
+IN sonarqube webpage ----click on manually to create project----project name---onix-website-scan---project display name(same)----main branch name(main)---setup--click
+on with jenkins---github---configure analysis----continue----continue---click on other----copy 2(no)projectkey--click on finish this tutorial
+in same page---go to admin(top right corner)--click on my account--security---click on generate token(sonarqube-token)---chk video 26min---click on generate token--
+copy token(save it somewhere)---
+
+JENKINS---manage jenkins---plugins---(sonarqubescanner) and (SSH2Easy)------install
+manage jenkins---global tool configuration----sonarqube scanner--add sonarqube scanner---name(sonarscanner)-install automatically --save-=-
+manage jenkins---configure system---sonarqube servers--add sonarqube---name(sonar server)---server url(---)---save---
+go to project name----configure---build step--execute sonarqube scanner--paste the key(chk video--30min))--save--
+manage jekins---configure system---sonarqube server--server authentication token----add (jenkins)--add credentials---kind(secret text)---add chk video 31min---select 
+the token(sonar-token)--save
+go to the project---buildnow---here sonarqube will scan the code give output.
+
+[[[[In case if u get the error  "permission denied (public key)"----ex--from jenkins server to docker(ssh)--said error---go to the docker serrver and 
+cd /etc/ssh/sshd_config --pubkeyauthentication(yes)---passwordauthentication(yes)]]]]]]systemctl status sshd or systemctl restart sshd-----------
+
+DOCKER---
+sudo apt-get update -y
+install docker(docker for ubuntu)---------------check in google
+password ubuntu    ubuntu         ubuntu
+
+In JENKINS----su jenkins(switch to jenkins user))---ssh ubuntu@docker public ip--[if u get above error resolve it]---- ssh success to docker----36th min
+ssh-keygen
+ssh-copy-id ubuntu@docker public ip	
+JENNKINS------browser---
+project name ---manage jenkins----configure system-----server groups center--add---groupname(docker-server)-ssh port 22---username(ubuntu)--password ubuntu--save
+    same            same                 same          server list--add--server group(docker servers)---server name(docker 1)-- server ip(docker public ip)----save
+click on project name--configure--build steps ----add buildstep(remote shell)--tarrget server(docker servers  docker 1--docker public ip)---shell(touch test.txt)--
+save----build now
+go to docker---ls(u can see the test.txt file here)----
+GITHUB---create new file(Dockerfile))----
+FROM nginx
+COPY .  /usr/share/nginx/html---to know the nginx path--nginx dockerhub(in browser)--how to use this image below this(/usr/share/nginx/html--commit newfile
+this docker file automatically executed in jenkins ---(42 nd min)
+[JENKINS----configure----remove remote shell-----add build step(execute shell)---scp ./* ubuntu@docker ip address:~/website/-----save
+in docker server--mkdir website(44 min)---cd website--pwd---/home/ubuntu/website]-----------------------------
+click on build now--failed--bugs in docker file----go to sonarqube --click onix-website scan--click on new security hotspots--46th min
+jenkins clickon configure----execute shell add -r(scp -r ./* ubuntu@docker ip address:~/website/----save---click on build now---success
+DOCKER-----cd website---ls---Dockerfile  test.txt index.html prepros.config  vendor
+jenkins--configure--execute shell ---add buildstep--Remote shell---cd /hoem/ubuntu/website---sudo docker ps--[as ubuntu user  sudo usermod -aG docker(groupname) ubuntu]
+newgrp docker---docker ps-----------48th min------
+cd /hoem/ubuntu/website-------docker build -t mywebsite-----docker run -d -p 8085:80 --name = onix-wewbsite mywebsite---save-----builditnow---success
+docker ps---container is running---go to the docker instance and security---edit inbound rules----add port 8085---
+docker public ip with port 8085--paste in browser---
+________________________________________________________________________________________________________________________________________________________________
+Complete CI CD Implementation From Scratch 2023----https://www.youtube.com/watch?v=Xgse7UkCr6E----COMPLETED-----------

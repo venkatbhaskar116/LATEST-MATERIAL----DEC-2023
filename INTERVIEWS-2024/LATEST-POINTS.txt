@@ -1,0 +1,67 @@
+AWS EC2-------------
+
+What is the difference between instance check and system check?
+
+The system status check detects issues with an instance's underlying hardware. If the underlying hardware is unresponsive or unreachable because of network, 
+hardware, or software issues, then the system status check fails. 
+An instance status check failure indicates that the instance is unreachable.
+-------------------------------------------------------------------------------------------------------------------------
+                               DOCKER
+Docker 03: Handling Docker Volumes with Hands-on----------https://serdem.medium.com/docker-03-handling-docker-volumes-with-hands-on-cb9a5bb1c045
+to know which volume is attached to which container----docker ps -a --filter volume=volumename
+
+Docker networking------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+GIT MERGE-------merging the feature branch commits with main branch and creates new commit which denotes that merging taken place from feature to main.
+It maintains the history of what action has to be made like i.e merging from feature to main-------(git checkout main and do the merge)
+
+GIT REBASE-----here feature branch commits are merged with main and no extra commit as in MERGE operation.the feature branch commits are added to main next to the 
+same row of the main branch.No extra commits , just added the newly committed with main.
+
+How u revert a commit command that has been pushed and made public-------
+git revert 'commit id'
+git commit -m "commit message"
+------------------------------------------------------------------------------------------------------------------------------------------------------
+jira--------------14days only(27th nov-10th dec 2023)
+venkatdevops8338@gmail.com
+venkat@1969
+sitename----https://venkatdevops8338.atlassian.net/jira/software/projects/KAN/boards/1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

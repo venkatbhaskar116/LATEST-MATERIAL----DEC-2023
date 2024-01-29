@@ -1,0 +1,51 @@
+DevOps Interview Questions and Answers for Freshers and Experienced in 2023-----https://www.youtube.com/watch?v=GX6fOvaS0Xs
+
+
+INSTANCE PROFILE IS a container for an IAM role and you can use role information to an ec2 instance when instance starts.
+
+Instance profile in IAM is a container and you can userole info to an ec2 instance when instanc3 starts----------- 
+difference between TCP and UDP-------
+TCP is used for transferring the data like emails,files transfer and web browsing securely without of loosing of pockets of data.
+UDP is used for realtime video streaming i.e data is transferred even though it is complete or not.
+
+IN LINUX---alias command is used for shortening the longer commands(alias ls ='ls -ltr'   alias kgp(kubernetes get pods))
+seven layers of OSI(open system interconnection))---
+physical
+datalink
+network 
+transport
+session
+presentation
+application
+
+RESERVED INSTANCES---are long term reservations of compute capacity,offering a significant discount.
+SPOT INSTANCES-------are spare capacity instances available at a lower price but terminated with short notice.
+ON-DEMAND INSTANCES--pay for compute capacity   by the hour with no longterm commitments.
+
+ANSIBLE IS  configuration management and automationvtool ,Terraform is used for infrastructure provisionin and management.
+ANSIBLE defines how to configure servers,Terraform focuses on describing the desired state of infrastructure. 
+
+ansible playbooks is a yaml file .defines  a set of tasks and configurations to be executed on remote serrvers.it is used for automation and configuration mgmt.
+
+Statefile is used to keep track of the resources.it stores the current state of the infrastructure and helps Terraform plan and apply changes accurately.
+
+VIRTUALIZATION---Running multiple VM's in a physical server with its own Operating system.Its like having seperate houses for different families in a single building.
+CONTAINERIZATION---Running isolated applications on a shared operating system.its like having apartments in a single building,where each apartment is self contained.but
+shares common infrastructure.
+
+development environment-------testing ----build and test the code
+stage environment------------pre pod before deploy into production 
+
+blue green deployment-------------is a deployment strategy where u have two identical environments [blue and green],and switching the traffic between them  when 
+deployig new versions.this minimizes the downtime and allows quick rollbacks	 if issues arise.
+
+CANARY DEPLOYMENT------DEPLOYment is  a strategy where a new version of application is deployed to  a small subset of users or servers allowing for testing and validation
+if it performs well its gradually rolled out   the entire user base.ex--10% of traffic to initially  and gradually deployed at the end to tje newer version
+first 10% to new version ,second 20% and like that after every thing ok then users are connected with newer version.
+
+ISSUE U FACED---the most significant challenge i faced is ,managing a sudden influx or traffic during a product launch.we had quickly scale the application to handle 
+the load w hich involved in ptimizzing the databsase querries and adding more servers..
+
+I automate the deployment using jenkins,gitlab and gitlab CICD.Building and testing the code automatically  on every commit and also continuous monitoring to make 
+sure systems are up and running.
+

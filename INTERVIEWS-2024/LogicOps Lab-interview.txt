@@ -1,0 +1,154 @@
+                           LogicOps Lab
+
+DevOps Real Time Scenarios | DevOps Real Time Challenges | DevOps Real Time Work----11--https://www.youtube.com/watch?v=Z_h9JKv9J88
+
+1.u have an application with elastic ip and a db instance in 2 vpcs of the same account--how to connect the application with db?
+in the db instance SECURITY GROUP mention the rule of allowing the traffic from application vpc(vpc a) to access the db (vpc b)(by editing inbound rules of db instance.
+CAUTION----application is in publc ip(anybody can access the application and db instance in private(no access for the user)
+to access the db instance in private ip--for -the application we create private ip address and access the db instance.  its not secured.
+Correct solution is CONFIGURE A VPC PEERING CONNECTION  BETWEEN VPC A AND VPC B[https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html]
+-----------------
+How can i troubleshoot the connectivity to an RDS db instance that uses a public or private subnet of a vpc(https://www.google.com/search?q=aws+amazon.com+How+can+i+troubleshoot+the+connectivity+to+an+RDS+db+instance+that+uses+a+public+or+private+subnet+of+a+vpc&client=avast-a-1&ei=iR3nY6HNO5SLseMPvsaSgAQ&ved=0ahUKEwjhterT1Iz9AhWURWwGHT6jBEAQ4dUDCA8&uact=5&oq=aws+amazon.com+How+can+i+troubleshoot+the+connectivity+to+an+RDS+db+instance+that+uses+a+public+or+private+subnet+of+a+vpc&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIHCAAQDRCABDIHCAAQDRCABDIHCAAQDRCABDIHCAAQDRCABDIHCAAQDRCABDIHCAAQDRCABDIHCAAQDRCABDIHCAAQDRCABDIHCAAQDRCABDIHCAAQDRCABEoECEEYAEoECEYYAFAAWKoMYKUbaABwAHgAgAGLAYgBgwKSAQMwLjKYAQCgAQGgAQLAAQE&sclient=gws-wiz-serp#fpstate=ive&vld=cid:c2281ecb,vid:PxFZt8MG2ss)
+
+eventhough ur db instance in public subnet,if u are unable to connect db--
+go to aws console -rds-select db instance--CLICK ON MODIFY--network and security----change to publicaccessibility to yes and then db access---
+check for route tables-internet gateway (attach to the route table)
+try to inbound rules of security group of the instance edit the SG.--------------------------------------------------------------------------
+
+
+HOW CAN U COMEOUT IF U R FACING BUGS,OUTAGE AND SLOWNESS IN UR PRODUCTION-----https://www.youtube.com/watch?v=fMBpGyyerq0&list=RDCMUCjGcthjRHGegI8TeJHMS6wA&index=2
+(scenario 8)
+slowness --when u r trying to connect some of website if it is buffering that is slowness
+outage---if u are trying to conncet to web browser--showing it cant reached ----outage
+bug is showing incorrect answer
+root causes-------------May be a developer try to test any feature branch on production system.
+                        May be a tester/qa are trying to test (smoke or regretion test)) on production.
+                        May be devops team try to test the some configurations on production.
+
+SOLUTION--tell to developers that craete a seperate CICD pipeline for their written code for dev environment.
+          tell to testers(qa/uat environment) to create a CICD pipeline for testing.
+          create a seperate CICD pipeline to deploy in production.--------------------------------------------------------------------------------
+
+
+SCENARIO 9-------https://www.youtube.com/watch?v=uQkx3wdNuNc&list=RDCMUCjGcthjRHGegI8TeJHMS6wA&index=2
+bug in production(branching strategy)------https://www.youtube.com/watch?v=HBCrDYlo2Tc&list=RDCMUCjGcthjRHGegI8TeJHMS6wA&index=3
+if u want develop a code of dev branch--ex--create a feature branch for dev branch and do some code changes then push to the dev branch and tested and
+create a PR/MR(pull reuest/merge request) for merging with dev branch    it is common process for stage and production.
+BACK/DOWN MERGE----------------------------here u have dev,stage and prod branches----
+if u have a bug in production--create a feature branch for prod and fix the piecec of code and tested and raise PR/MR and merge with prod branch and deploy in to prodcution
+This updated code has to go to stage and dev branches   it is called BACK/DOWN MERGE.(because in coming days if a developer wants to work on somecode on dev branch(here if not prod branch updated code is not here
+there will conflicts so eventhough a developer updated code merge with prod he should go with that code to stage nad dev branch so that consider the code has been 
+updated)
+
+CI CD Build Failure in Production? | Why? | DevOps Production Issues -----https://www.youtube.com/watch?v=OEoM4-GmtsU&list=PL8WTXLSrtyWo5qTkjyLoHn2BQ-5_N6smF&index=4
+[check this]
+1.may be production server is down and application down
+2.after updates the  os of servers, they are not coming up(monthly update)
+3.all environments like dev,qa/uat,stage and prod should have the same configuration (like cpu,ram,memory))in any cloud platform.
+
+
+
+Difference Between JAR WAR and EAR | JAR vs WAR vs EAR |------------https://www.youtube.com/watch?v=GIvUxbFRW7A&list=PL8WTXLSrtyWo5qTkjyLoHn2BQ-5_N6smF&index=4
+JAR,WAR and EAR these are all packages of java application..it consists of no.of files.
+EAR----------enterprise archive
+WAR---------web archive
+JAR----------java archive
+
+
+How to Store Terraform State File In AWS | DevOps Real Time Scenarios----https://www.youtube.com/watch?v=5FkcC_w3xQM&list=PL8WTXLSrtyWo5qTkjyLoHn2BQ-5_N6smF&index=5
+ROLES AND POLICYS IN AWS-----policy is (if in s3 bucket) u have to give the access to the s3 bucket and place this policy in a ROLE in IAM------------IMP
+
+1.main.tf file---in this ,terrform {backend--s3 and region etc details}
+2.create s3 bucket
+3.name your statefile
+4.dynamo db --create a table
+5.create policy and place it in a role in aim policy
+terraform init
+terraform plan 
+terraform apply
+CAUTION-----never keep your state file in local....it should be in a central place like s3 bucket..
+https://support.hashicorp.com/hc/en-us/articles/4411513223443-How-to-migrate-Terraform-state-file-from-Terraform-Cloud-to-S3-bucket#:~:text=Execute%20terraform%20init%20%2Dmigrate%2Dstate,prompted)%20to%20the%20S3%20bucket.
+
+
+DevOps Real World Problems | DevOps Real Time Scenarios | AWS Infrastructure Interview Questions---https://www.youtube.com/watch?v=miDk-OAtUCM&list=PL8WTXLSrtyWo5qTkjyLoHn2BQ-5_N6smF&index=6
+ in aws echo system-------creating 2 ec2 instances using ansible with below conditions-----
+push config model
+pull config model---strikeout because ansible using push based
+playbook creation
+terraform tool-------not eqqual to ANSIBLE----terraform mostly opted for creation of infrastructure for any kind of cloud provider. teamlead said with ansible only.
+IAM Roles and policys
+AWS secret & access key---strike out the  line
+
+
+DevOps Real World Problems | Jenkins Server in EC2 Instance | How to Choose ---https://www.youtube.com/watch?v=MWOydhzXn4g&list=PL8WTXLSrtyWo5qTkjyLoHn2BQ-5_N6smF&index=7
+PROBLEM---
+install jenkins on any VM
+use ansible
+use aws console
+CONDITIONS---------------pick 4          
+1.min 1 ec2 instance---------------no
+2.min 2 ec2------------------------ok(jenkins master and slave)
+3.ansible(java based)--------------no
+4.ansible(python based)------------ok
+5.playbook-------------------------ok
+6.yum(module)----------------------ok(incase of centos only)                                                
+7.IAM user configuration-----------no
+8.22,8080(enabled ports)-----------ok
+9.22,80(enabled ports)-------------no
+10.Damnit i am leaving this job.
+
+
+Container Security Best Practices | Docker Security Best Practices-------------https://www.youtube.com/watch?v=zpbaEUfoBZc&list=PL8WTXLSrtyWo5qTkjyLoHn2BQ-5_N6smF&index=8
+ BUILD DOCKER IMAGE CONTAINER 
+CONDITIONS----
+1.large docker image-----------ok
+2.small size image
+3.scanning docker image
+4.large container surface area-ok
+5.small    "
+6.use multi-stage layer pattern
+
+
+
+@********************************************************@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@****************************************************
+
+DevOps Interview for 3 Years Experience | DevOps Online Interview | DevOps Project Based Interview------https://www.youtube.com/watch?v=LqtErW3e6Kc--20mins complete 
+INSTANCE PROFILE IN IAM ------------
+An instance profile is a container for an iam role that you can use to pass the role info into an ec2 instance when the instance starts.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Git Interview Questions for DevOps | Cloudfront Interview Questions | DevOps Git Interview Questions----https://www.youtube.com/watch?v=PzmGw6MNwEA&t=253s
+git fetch and git merge
+HEAD in git
+
+
+
+Linux DevOps Interview Questions | Terraform Interview Questions and Answers for DevOps Engineer |13----https://www.youtube.com/watch?v=dLKzeNk5ZS8
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+LogicOps Lab------youtube---------community--------
+
+Real Time Scenario on VPCs. Did you check out the latest video?-------------------SEEN
+Link - https://youtu.be/Z_h9JKv9J88
+
+Did you check out the latest Real Time Scenario Question on AWS?------------------seen
+Link - https://youtu.be/AtawJ-5LCHg
+  
+
+
+
+Terraform Modules - Part #1 is out NOW! Part #2 will be out soon and will clear all your doubts with a demo.
+Link - https://youtu.be/W92fsWzVRsg
+
+https://www.interviewbit.com/blog/devops-projects/------Deploying a Containerized Web Application-----all projects----------https://www.mygreatlearning.com/academy
+Great Learning
+
+Deploying a simple app using Docker and ECS | AWS Elastic Container Service | Great Learning---https://www.youtube.com/watch?v=h0Dk8K_ncp4---Great Learning
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+*************************************************************************************************************
+AWS:- Share AWS AMI across regions and account----https://www.youtube.com/watch?v=OPkX2gHH5YI----------yet AWS FOLDER--ABHUSHEK----AWS EC2
+AWS DEVOPS interview | DevOps Interview Questions | AWS DevOps Recorded----https://www.youtube.com/watch?v=sn_GEeIDg4s---completed
+WS interview Questions | Devops interview q-----https://www.youtube.com/watch?v=lo2UfEukCB4---------------WOWRKING
+
+SPOT INSTANCES-----getting the spot instances based on bidding by cloud provider -- its not reliable---may be server will be lost if any others are bidding more than u.
+[spot instances can offer up to 90% discount but quickly get interrupted.
+
+ON-DEMAND INSTANCES---Instances are for based on demand meaning u can get this instance for usage of a period means for 2 hrs or 3 hrs .after that time u can 
+terminate yourself.
+
+RESERVED INSTANCES---reserved for future expecting --- reserved instances offer up to 72% decreased rates and high availability, but with long commitment periods.
+
+NAT GATEWAY----------managed service which launches the redundant instances within the selected AZ
+NAT INSTANCE--------Individual instances.these are lauched by community AMI's
+
+
+
+AWS Interview | AWS DevOps Recorded Interview | Hi-Tech Institution | AWS DevOps Mock Interview------------------Hi-Tech Institutionhttps:
+//www.youtube.com/watch?v=-__KCZjf8tM&list=PLt8Y3NwVSVfYw9mcHUuNpnka9FkZ9wWpq
+
+
+ 
+
+
+
+
+
+
+
+
